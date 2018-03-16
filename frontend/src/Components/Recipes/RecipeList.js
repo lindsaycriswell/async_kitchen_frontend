@@ -10,13 +10,10 @@ class RecipeList extends React.Component {
 
   render() {
     return (
-      <div>
-        {
-          // Map recipes here
-          // {console.log(this.props.recipes)}
-        }
-        <h2>RecipeList</h2>
-        <RecipeCard />
+      <div className="ui grid">
+        {this.props.recipes.map(recipe => (
+          <RecipeCard recipe={recipe} key={recipe.id} />
+        ))}
       </div>
     );
   }
@@ -24,7 +21,8 @@ class RecipeList extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    recipes: state.recipes
+    recipes: state.recipes,
+    currentMeal: state.currentMeal
   };
 }
 

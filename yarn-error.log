@@ -22,7 +22,9 @@ npm manifest:
       "react-router-dom": "^4.2.2",
       "react-router-redux": "^5.0.0-alpha.9",
       "redux": "^3.7.2",
-      "redux-thunk": "^2.2.0"
+      "redux-thunk": "^2.2.0",
+      "semantic-ui-css": "^2.3.0",
+      "semantic-ui-react": "^0.78.3"
     }
   }
 
@@ -38,9 +40,24 @@ Lockfile:
     version "2.0.6"
     resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   
+  babel-runtime@^6.25.0:
+    version "6.26.0"
+    resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+    dependencies:
+      core-js "^2.4.0"
+      regenerator-runtime "^0.11.0"
+  
+  classnames@^2.2.5:
+    version "2.2.5"
+    resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
+  
   core-js@^1.0.0:
     version "1.2.7"
     resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
+  
+  core-js@^2.4.0:
+    version "2.5.3"
+    resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.3.tgz#8acc38345824f16d8365b7c9b4259168e8ed603e"
   
   encoding@^0.1.11:
     version "0.1.12"
@@ -99,6 +116,10 @@ Lockfile:
       node-fetch "^1.0.1"
       whatwg-fetch ">=0.10.0"
   
+  jquery@x.*:
+    version "3.3.1"
+    resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
+  
   js-tokens@^3.0.0:
     version "3.0.2"
     resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
@@ -107,7 +128,7 @@ Lockfile:
     version "4.17.7"
     resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.7.tgz#db240a3252c3dd8360201ac9feef91ac977ea856"
   
-  lodash@^4.17.5, lodash@^4.2.1:
+  lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1:
     version "4.17.5"
     resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
   
@@ -144,7 +165,7 @@ Lockfile:
     dependencies:
       asap "~2.0.3"
   
-  prop-types@^15.5.4, prop-types@^15.6.0:
+  prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.0:
     version "15.6.1"
     resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
     dependencies:
@@ -207,9 +228,29 @@ Lockfile:
       loose-envify "^1.1.0"
       symbol-observable "^1.0.3"
   
+  regenerator-runtime@^0.11.0:
+    version "0.11.1"
+    resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+  
   resolve-pathname@^2.2.0:
     version "2.2.0"
     resolved "https://registry.yarnpkg.com/resolve-pathname/-/resolve-pathname-2.2.0.tgz#7e9ae21ed815fd63ab189adeee64dc831eefa879"
+  
+  semantic-ui-css@^2.3.0:
+    version "2.3.0"
+    resolved "https://registry.yarnpkg.com/semantic-ui-css/-/semantic-ui-css-2.3.0.tgz#e96d0d4069499eafff9ba0c84274bc23d2b084e7"
+    dependencies:
+      jquery x.*
+  
+  semantic-ui-react@^0.78.3:
+    version "0.78.3"
+    resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-0.78.3.tgz#c45ca374c8f1b61bc4fbe29e564a5fe6af5403f8"
+    dependencies:
+      babel-runtime "^6.25.0"
+      classnames "^2.2.5"
+      fbjs "^0.8.16"
+      lodash "^4.17.4"
+      prop-types "^15.5.10"
   
   setimmediate@^1.0.5:
     version "1.0.5"
