@@ -11,13 +11,3 @@ export function fetchRecipes() {
     });
   };
 }
-
-// export function fetchRecipes() {
-//   RecipeApi.fetchRecipes().then(recipes => {
-//     console.log(recipes);
-//     return {
-//       type: FETCHED_RECIPES,
-//       payload: recipes
-//     };
-//   });
-// }
