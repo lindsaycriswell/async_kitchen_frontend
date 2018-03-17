@@ -1,32 +1,42 @@
 import React from "react";
 import IngredientContainer from "../Ingredients/IngredientContainer";
 import DirectionContainer from "../Directions/DirectionContainer";
+import { connect } from "react-redux";
+import { postRecipeMeal } from "../../actions/recipemeals";
 
-const RecipeDetails = props => {
-  function handleClick(e) {
-    e.preventDefault();
-    console.log("add to meal");
+class RecipeDetails extends React.Component {
+  render() {
+    return (
+      <div>
+        <button
+          onClick={() =>
+            this.props.postRecipeMeal(this.props.recipe, this.props.currentMeal)
+          }
+          style={{ marginBottom: "10px" }}
+        >
+          Add to Meal
+        </button>
+        <p>
+          Course: {this.props.recipe.course} | Serves:{" "}
+          {this.props.recipe.servings}
+        </p>
+        {this.props.recipe.prep_time > 0 ? (
+          <p>Prep Time: {this.props.recipe.prep_time} minutes</p>
+        ) : null}
+        {this.props.recipe.cook_time > 0 ? (
+          <p>Cook Time: {this.props.recipe.cook_time} minutes</p>
+        ) : null}
+        <IngredientContainer ingredients={this.props.recipe.ingredients} />
+        <DirectionContainer directions={this.props.recipe.directions} />
+      </div>
+    );
   }
+}
 
-  console.log(props.recipe);
-  return (
-    <div>
-      <button onClick={handleClick} style={{ marginBottom: "10px" }}>
-        Add to Meal
-      </button>
-      <p>
-        Course: {props.recipe.course} | Serves: {props.recipe.servings}
-      </p>
-      {props.recipe.prep_time > 0 ? (
-        <p>Prep Time: {props.recipe.prep_time} minutes</p>
-      ) : null}
-      {props.recipe.cook_time > 0 ? (
-        <p>Cook Time: {props.recipe.cook_time} minutes</p>
-      ) : null}
-      <IngredientContainer ingredients={props.recipe.ingredients} />
-      <DirectionContainer directions={props.recipe.directions} />
-    </div>
-  );
-};
+function mapStateToProps(state) {
+  return {
+    currentMeal: state.currentMeal
+  };
+}
 
-export default RecipeDetails;
+export default connect(mapStateToProps, { postRecipeMeal })(RecipeDetails);

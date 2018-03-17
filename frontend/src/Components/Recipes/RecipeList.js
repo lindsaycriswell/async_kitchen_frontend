@@ -1,29 +1,26 @@
 import React from "react";
 import RecipeCard from "./RecipeCard";
-import { connect } from "react-redux";
-import { fetchRecipes } from "../../actions/recipes";
 
-class RecipeList extends React.Component {
-  componentDidMount() {
-    this.props.fetchRecipes();
-  }
+const RecipeList = props => {
+  let sortedRecipes = props.recipes.sort(function(a, b) {
+    let nameA = a.name.toUpperCase();
+    let nameB = b.name.toUpperCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
 
-  render() {
-    return (
-      <div className="ui grid">
-        {this.props.recipes.map(recipe => (
-          <RecipeCard recipe={recipe} key={recipe.id} />
-        ))}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="ui grid">
+      {sortedRecipes.map(recipe => (
+        <RecipeCard recipe={recipe} key={recipe.id} />
+      ))}
+    </div>
+  );
+};
 
-function mapStateToProps(state) {
-  return {
-    recipes: state.recipes,
-    currentMeal: state.currentMeal
-  };
-}
-
-export default connect(mapStateToProps, { fetchRecipes })(RecipeList);
+export default RecipeList;
