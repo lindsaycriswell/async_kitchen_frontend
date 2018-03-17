@@ -1,10 +1,18 @@
 import { FETCHED_RECIPES, FETCHING_RECIPES } from "../actions/recipes";
+import { CREATE_NEW_MEAL, CREATING_NEW_MEAL } from "../actions/meals";
+import {
+  CREATE_NEW_RECIPE_MEAL,
+  CREATING_NEW_RECIPE_MEAL
+} from "../actions/recipemeals";
 
-// SWITCH CURRENTMEAL TO FALSE
+// SWITCH NEWMEAL TO FALSE and reinstate on homepage when users are implemented
 
 const defaultState = {
   recipes: [],
-  currentMeal: true
+  newMeal: true,
+  currentMeal: {},
+  currentRecipes: [],
+  activeMeal: false
 };
 
 function rootReducer(state = defaultState, action) {
@@ -13,8 +21,21 @@ function rootReducer(state = defaultState, action) {
       return state;
     case FETCHED_RECIPES:
       return { ...state, recipes: action.payload };
-    case "TOGGLE_CURRENT_MEAL":
-      return { ...state, currentMeal: !state.currentMeal };
+    case CREATING_NEW_MEAL:
+      return state;
+    case CREATE_NEW_MEAL:
+      return {
+        ...state,
+        currentMeal: action.payload,
+        activeMeal: !state.activeMeal
+      };
+    case CREATING_NEW_RECIPE_MEAL:
+      return state;
+    case CREATE_NEW_RECIPE_MEAL:
+      return {
+        ...state,
+        currentRecipes: [...state.currentRecipes, action.payload]
+      };
     default:
       return state;
   }

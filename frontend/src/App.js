@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-// import NavBar from "./Components/NavBar";
+import NavBar from "./Components/NavBar";
 import RecipeContainer from "./Components/Recipes/RecipeContainer";
 // import MealContainer from "./Components/Meals/MealContainer";
 import Image from "./photos/homepage.jpg";
 import { connect } from "react-redux";
-import { toggleCurrentMeal } from "./actions/meals";
+import { postMeal } from "./actions/meals";
 
 class App extends Component {
   render() {
@@ -20,10 +20,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        {
-          // <NavBar />
-        }
-        {this.props.currentMeal ? (
+        <NavBar />
+
+        {this.props.newMeal ? (
           <div>
             <RecipeContainer />
             {
@@ -34,7 +33,7 @@ class App extends Component {
           <div
             style={sectionStyle}
             className="ui grid"
-            onClick={this.props.toggleCurrentMeal}
+            // onClick={this.props.postMeal}
           >
             <div className="six wide column" />
             <div style={{ marginTop: "60px" }} className="four wide column">
@@ -65,8 +64,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentMeal: state.currentMeal
+    newMeal: state.newMeal
   };
 };
 
-export default connect(mapStateToProps, { toggleCurrentMeal })(App);
+export default connect(mapStateToProps, { postMeal })(App);

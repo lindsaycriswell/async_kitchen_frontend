@@ -24,7 +24,7 @@ class RecipeCard extends React.Component {
         className="four wide column"
         // style={{ marginLeft: "10px" }}
       >
-        <Card onClick={this.handleClick}>
+        <Card onClick={this.handleClick} style={{ marginBottom: "30px" }}>
           <Image src={"./photos/" + getPhoto} />
           <Card.Content>
             <h3
