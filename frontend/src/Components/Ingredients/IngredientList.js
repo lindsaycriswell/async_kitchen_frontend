@@ -1,12 +1,13 @@
 import React from "react";
 import Ingredient from "./Ingredient";
 
-const IngredientList = () => {
+const IngredientList = props => {
   return (
-    <div>
-      <h6>IngredientList</h6>
-      <Ingredient />
-    </div>
+    <ul style={{ textAlign: "left", marginBottom: "10px" }}>
+      {props.ingredients.map(ingredient => (
+        <Ingredient ingredient={ingredient} key={ingredient.id} />
+      ))}
+    </ul>
   );
 };
 
