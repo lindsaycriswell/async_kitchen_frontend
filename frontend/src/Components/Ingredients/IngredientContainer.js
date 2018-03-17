@@ -1,11 +1,11 @@
 import React from "react";
 import IngredientList from "./IngredientList";
 
-const IngredientContainer = () => {
+const IngredientContainer = props => {
   return (
     <div>
-      <h5>IngredientContainer</h5>
-      <IngredientList />
+      <h3 style={{ margin: "15px" }}>Ingredients</h3>
+      <IngredientList ingredients={props.ingredients} />
     </div>
   );
 };

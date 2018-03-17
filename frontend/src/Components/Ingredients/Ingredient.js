@@ -1,11 +1,7 @@
 import React from "react";
 
-const Ingredient = () => {
-  return (
-    <div>
-      <p>Ingredient</p>
-    </div>
-  );
+const Ingredient = props => {
+  return <li>{props.ingredient.description}</li>;
 };
 
 export default Ingredient;

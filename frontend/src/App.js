@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 // import NavBar from "./Components/NavBar";
 import RecipeContainer from "./Components/Recipes/RecipeContainer";
-import MealContainer from "./Components/Meals/MealContainer";
+// import MealContainer from "./Components/Meals/MealContainer";
 import Image from "./photos/homepage.jpg";
 import { connect } from "react-redux";
 import { toggleCurrentMeal } from "./actions/meals";
@@ -26,7 +26,9 @@ class App extends Component {
         {this.props.currentMeal ? (
           <div>
             <RecipeContainer />
-            <MealContainer />
+            {
+              // <MealContainer />
+            }
           </div>
         ) : (
           <div

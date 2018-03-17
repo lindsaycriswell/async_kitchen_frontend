@@ -1,11 +1,7 @@
 import React from "react";
 
-const Direction = () => {
-  return (
-    <div>
-      <p>Direction</p>
-    </div>
-  );
+const Direction = props => {
+  return <li>{props.direction.description}</li>;
 };
 
 export default Direction;

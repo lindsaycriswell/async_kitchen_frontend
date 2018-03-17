@@ -1,12 +1,13 @@
 import React from "react";
 import Direction from "./Direction";
 
-const DirectionList = () => {
+const DirectionList = props => {
   return (
-    <div>
-      <h6>DirectionList</h6>
-      <Direction />
-    </div>
+    <ul style={{ textAlign: "left" }}>
+      {props.directions.map(direction => (
+        <Direction direction={direction} key={direction.id} />
+      ))}
+    </ul>
   );
 };
 

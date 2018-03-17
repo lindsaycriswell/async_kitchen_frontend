@@ -1,7 +1,6 @@
 import React from "react";
 import RecipeDetails from "./RecipeDetails";
 import { Card, Image } from "semantic-ui-react";
-import image from "../../photos/asian-salmon-in-foil.jpg";
 
 class RecipeCard extends React.Component {
   state = {
@@ -21,19 +20,19 @@ class RecipeCard extends React.Component {
       .join("-")}.jpg`;
 
     return (
-      <div className="two wide column">
-        <Card
-          onClick={this.handleClick}
-          className="four wide column"
-          style={{ margin: "30px" }}
-        >
+      <div
+        className="four wide column"
+        // style={{ marginLeft: "10px" }}
+      >
+        <Card onClick={this.handleClick}>
           <Image src={"./photos/" + getPhoto} />
           <Card.Content>
             <h3
               style={{
                 color: "blue",
                 textDecoration: "underline",
-                height: "5vh"
+                height: "5vh",
+                marginBottom: "0px"
               }}
             >
               {this.props.recipe.name}
@@ -46,7 +45,6 @@ class RecipeCard extends React.Component {
             ) : null}
           </Card.Content>
         </Card>
-        <div className="two wide column" />
       </div>
     );
   }
