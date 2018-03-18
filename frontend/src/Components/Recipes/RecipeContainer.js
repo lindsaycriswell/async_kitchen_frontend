@@ -2,6 +2,7 @@ import React from "react";
 import Filters from "../Filters";
 import RecipeList from "./RecipeList";
 import Image from "./../../photos/recipe-page.jpg";
+import MealContainer from "./../Meals/MealContainer";
 import { connect } from "react-redux";
 import { fetchRecipes } from "../../actions/recipes";
 import { postMeal } from "../../actions/meals";
@@ -22,17 +23,22 @@ class RecipeContainer extends React.Component {
       backgroundImage: `url(${Image})`
     };
 
+    const listRecipes = this.props.recipes.filter(
+      recipe => recipe.id !== this.props.addedRecipe.id
+    );
+
     return (
       <div>
         <div style={sectionStyle} />
         <div style={{ backgroundColor: "teal" }}>
           {this.props.activeMeal ? (
             <div>
+              <MealContainer recipes={this.props.currentRecipes} />
               <h1 style={{ color: "white", paddingTop: "20px" }}>
                 Pick some recipes to add to your meal!
               </h1>
               <Filters />
-              <RecipeList recipes={this.props.recipes} />
+              <RecipeList recipes={listRecipes} />
             </div>
           ) : (
             <Button
@@ -57,6 +63,7 @@ function mapStateToProps(state) {
     recipes: state.recipes,
     currentMeal: state.currentMeal,
     currentRecipes: state.currentRecipes,
+    addedRecipe: state.addedRecipe,
     activeMeal: state.activeMeal
   };
 }

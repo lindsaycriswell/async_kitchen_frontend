@@ -1,11 +1,13 @@
 import React from "react";
 import RecipeList from "../Recipes/RecipeList";
 
-const MealContainer = () => {
+const MealContainer = props => {
   return (
     <div>
-      <h1>MealContainer</h1>
-      <RecipeList />
+      {props.recipes.length > 0 ? (
+        <h1 style={{ color: "white", paddingTop: "20px" }}>Current Meal</h1>
+      ) : null}
+      <RecipeList recipes={props.recipes} />
     </div>
   );
 };

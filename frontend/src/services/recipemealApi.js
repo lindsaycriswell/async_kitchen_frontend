@@ -1,6 +1,5 @@
 class RecipeMealApi {
   static postRecipeMeal(recipe, currentMeal) {
-    console.log(currentMeal);
     return fetch("http://localhost:3000/recipe_meals", {
       method: "POST",
       headers: {
