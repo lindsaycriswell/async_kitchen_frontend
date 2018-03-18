@@ -1,53 +1,53 @@
 import React from "react";
 import RecipeDetails from "./RecipeDetails";
-import { Card, Image } from "semantic-ui-react";
+import { Card, Image, Modal, Header } from "semantic-ui-react";
 
-class RecipeCard extends React.Component {
-  state = {
-    showDetails: false
-  };
+const RecipeCard = props => {
+  let getPhoto = `${props.recipe.name
+    .toLowerCase()
+    .split(" ")
+    .join("-")}.jpg`;
 
-  handleClick = () => {
-    this.setState({
-      showDetails: !this.state.showDetails
-    });
-  };
-
-  render() {
-    let getPhoto = `${this.props.recipe.name
-      .toLowerCase()
-      .split(" ")
-      .join("-")}.jpg`;
-
-    return (
-      <div
-        className="four wide column"
-        // style={{ marginLeft: "10px" }}
-      >
-        <Card onClick={this.handleClick} style={{ marginBottom: "30px" }}>
-          <Image src={"./photos/" + getPhoto} />
-          <Card.Content>
-            <h3
-              style={{
-                color: "blue",
-                textDecoration: "underline",
-                height: "5vh",
-                marginBottom: "0px"
-              }}
-            >
-              {this.props.recipe.name}
-            </h3>
-            {this.state.showDetails ? (
-              <RecipeDetails
-                recipe={this.props.recipe}
-                key={this.props.recipe.id}
-              />
-            ) : null}
-          </Card.Content>
-        </Card>
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      className="four wide column"
+      // style={{ marginLeft: "10px" }}
+    >
+      <Card style={{ marginBottom: "30px" }}>
+        <Modal
+          style={{ marginLeft: "230px", marginTop: "70px" }}
+          trigger={
+            <div>
+              <Image src={"./photos/" + getPhoto} />
+              <Card.Content>
+                <h3
+                  style={{
+                    color: "blue",
+                    textDecoration: "underline",
+                    height: "5vh",
+                    marginTop: "10px"
+                  }}
+                >
+                  {props.recipe.name}
+                </h3>
+              </Card.Content>
+            </div>
+          }
+          closeIcon
+        >
+          <Modal.Header style={{ color: "blue" }}>
+            {props.recipe.name}
+          </Modal.Header>
+          <Modal.Content image scrolling>
+            <Image wrapped size="large" src={"./photos/" + getPhoto} />
+            <Modal.Description>
+              <RecipeDetails recipe={props.recipe} key={props.recipe.id} />
+            </Modal.Description>
+          </Modal.Content>
+        </Modal>
+      </Card>
+    </div>
+  );
+};
 
 export default RecipeCard;
