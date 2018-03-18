@@ -1,6 +1,6 @@
 import React from "react";
 import RecipeDetails from "./RecipeDetails";
-import { Card, Image, Modal, Header } from "semantic-ui-react";
+import { Card, Image, Modal } from "semantic-ui-react";
 
 const RecipeCard = props => {
   let getPhoto = `${props.recipe.name

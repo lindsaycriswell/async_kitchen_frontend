@@ -12,6 +12,7 @@ const defaultState = {
   newMeal: true,
   currentMeal: {},
   currentRecipes: [],
+  addedRecipe: {},
   activeMeal: false
 };
 
@@ -34,7 +35,8 @@ function rootReducer(state = defaultState, action) {
     case CREATE_NEW_RECIPE_MEAL:
       return {
         ...state,
-        currentRecipes: [...state.currentRecipes, action.payload]
+        currentRecipes: [...state.currentRecipes, action.payload],
+        addedRecipe: action.payload
       };
     default:
       return state;
