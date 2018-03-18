@@ -5,6 +5,7 @@ import Image from "./../../photos/recipe-page.jpg";
 import { connect } from "react-redux";
 import { fetchRecipes } from "../../actions/recipes";
 import { postMeal } from "../../actions/meals";
+import { Button } from "semantic-ui-react";
 
 class RecipeContainer extends React.Component {
   componentDidMount() {
@@ -37,12 +38,16 @@ class RecipeContainer extends React.Component {
               <RecipeList recipes={this.props.recipes} />
             </div>
           ) : (
-            <button
-              style={{ marginTop: "10px", marginBottom: "500px" }}
+            <Button
+              size="massive"
+              style={{
+                marginTop: "50px",
+                marginBottom: "500px"
+              }}
               onClick={this.props.postMeal}
             >
-              Click to start a new meal
-            </button>
+              Start a New Meal!
+            </Button>
           )}
         </div>
       </div>
