@@ -22,9 +22,6 @@ class RecipeContainer extends React.Component {
       backgroundImage: `url(${Image})`
     };
 
-    console.log(this.props.currentMeal);
-    console.log(this.props.currentRecipes);
-
     return (
       <div>
         <div style={sectionStyle} />
