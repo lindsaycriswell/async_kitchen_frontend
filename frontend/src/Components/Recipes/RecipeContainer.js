@@ -18,18 +18,10 @@ class RecipeContainer extends React.Component {
       margin: 0,
       width: "100vw",
 
-      height: "45vh",
+      height: "42vh",
       backgroundSize: "cover",
       backgroundImage: `url(${Image})`
     };
-    //
-    // const listRecipes = this.props.recipes.filter(recipe => {
-    //   console.log(this.props.currentRecipes);
-    //   return this.props.currentRecipes.indexOf(recipe) === -1;
-    // });
-    //
-    // console.log(listRecipes);
-    // console.log(this.props.currentRecipes);
 
     return (
       <div>
@@ -42,10 +34,7 @@ class RecipeContainer extends React.Component {
                 Pick some recipes to add to your meal!
               </h1>
               <Filters />
-              <RecipeList
-                recipes={this.props.recipes}
-                currentRecipes={this.props.currentRecipes}
-              />
+              <RecipeList recipes={this.props.recipes} />
             </div>
           ) : (
             <Button
