@@ -9,10 +9,7 @@ const RecipeCard = props => {
     .join("-")}.jpg`;
 
   return (
-    <div
-      className="four wide column"
-      // style={{ marginLeft: "10px" }}
-    >
+    <div className="four wide column">
       <Card style={{ marginBottom: "30px" }}>
         <Modal
           style={{ marginLeft: "230px", marginTop: "70px" }}

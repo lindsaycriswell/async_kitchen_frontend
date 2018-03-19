@@ -8,14 +8,6 @@ class RecipeDetails extends React.Component {
   render() {
     return (
       <div>
-        <button
-          onClick={() =>
-            this.props.postRecipeMeal(this.props.recipe, this.props.currentMeal)
-          }
-          style={{ marginBottom: "10px" }}
-        >
-          Add to Meal
-        </button>
         <p>
           Course: {this.props.recipe.course} | Serves:{" "}
           {this.props.recipe.servings}
@@ -28,6 +20,14 @@ class RecipeDetails extends React.Component {
         ) : null}
         <IngredientContainer ingredients={this.props.recipe.ingredients} />
         <DirectionContainer directions={this.props.recipe.directions} />
+        <button
+          onClick={() =>
+            this.props.postRecipeMeal(this.props.recipe, this.props.currentMeal)
+          }
+          style={{ marginBottom: "10px" }}
+        >
+          Add to Meal
+        </button>
       </div>
     );
   }
