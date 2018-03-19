@@ -6,6 +6,7 @@ import { postRecipeMeal } from "../../actions/recipemeals";
 
 class RecipeDetails extends React.Component {
   render() {
+    console.log(this.props.recipe);
     return (
       <div>
         <button

@@ -12,8 +12,8 @@ const defaultState = {
   newMeal: true,
   currentMeal: {},
   currentRecipes: [],
-  addedRecipe: {},
-  activeMeal: false
+  activeMeal: false,
+  currentMealRecipes: []
 };
 
 function rootReducer(state = defaultState, action) {
@@ -33,13 +33,21 @@ function rootReducer(state = defaultState, action) {
     case CREATING_NEW_RECIPE_MEAL:
       return state;
     case CREATE_NEW_RECIPE_MEAL:
+      // console.log(action.payload);
+      // console.log(action.payload.recipeMeal);
       return {
         ...state,
         recipes: state.recipes.filter(
-          recipe => recipe.id !== action.payload.id
+          recipe => recipe.id !== action.payload.currentMealRecipes.id
         ),
-        currentRecipes: [...state.currentRecipes, action.payload],
-        addedRecipe: action.payload
+        currentRecipes: [
+          ...state.currentRecipes,
+          action.payload.currentMealRecipes
+        ],
+        currentMealRecipes: [
+          ...state.currentMealRecipes,
+          action.payload.currentMealRecipes
+        ]
       };
     default:
       return state;
