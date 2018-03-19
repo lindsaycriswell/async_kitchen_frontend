@@ -35,6 +35,9 @@ function rootReducer(state = defaultState, action) {
     case CREATE_NEW_RECIPE_MEAL:
       return {
         ...state,
+        recipes: state.recipes.filter(
+          recipe => recipe.id !== action.payload.id
+        ),
         currentRecipes: [...state.currentRecipes, action.payload],
         addedRecipe: action.payload
       };

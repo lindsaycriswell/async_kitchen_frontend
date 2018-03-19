@@ -14,6 +14,14 @@ const RecipeList = props => {
     return 0;
   });
 
+  // const relevantRecipes = props.currentRecipes
+  //   ? sortedRecipes.filter(recipe => {
+  //       console.log(props.currentRecipes.indexOf(recipe));
+  //     })
+  //   : sortedRecipes;
+
+  // console.log(relevantRecipes);
+
   return (
     <div className="ui grid">
       {sortedRecipes.map(recipe => (
