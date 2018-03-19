@@ -22,16 +22,13 @@ class RecipeContainer extends React.Component {
       backgroundImage: `url(${Image})`
     };
 
-    console.log(this.props.currentMealRecipes);
-    console.log(this.props.recipes);
-
     return (
       <div>
         <div style={sectionStyle} />
         <div style={{ backgroundColor: "teal" }}>
           {this.props.activeMeal ? (
             <div>
-              <MealContainer recipes={this.props.currentMealRecipes} />
+              <MealContainer recipes={this.props.currentMeal.recipes} />
               <h1 style={{ color: "white", paddingTop: "20px" }}>
                 Pick some recipes to add to your meal!
               </h1>
@@ -60,9 +57,7 @@ function mapStateToProps(state) {
   return {
     recipes: state.recipes,
     currentMeal: state.currentMeal,
-    currentRecipes: state.currentRecipes,
-    activeMeal: state.activeMeal,
-    currentMealRecipes: state.currentMealRecipes
+    activeMeal: state.activeMeal
   };
 }
 
