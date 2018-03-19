@@ -2,21 +2,37 @@ import React from "react";
 import IngredientContainer from "../Ingredients/IngredientContainer";
 import DirectionContainer from "../Directions/DirectionContainer";
 import { connect } from "react-redux";
-import { postRecipeMeal } from "../../actions/recipemeals";
+import { postRecipeMeal, destroyRecipeMeal } from "../../actions/recipemeals";
 
 class RecipeDetails extends React.Component {
   render() {
-    console.log(this.props.recipe);
     return (
       <div>
-        <button
-          onClick={() =>
-            this.props.postRecipeMeal(this.props.recipe, this.props.currentMeal)
-          }
-          style={{ marginBottom: "10px" }}
-        >
-          Add to Meal
-        </button>
+        {this.props.currentMeal.recipes.includes(this.props.recipe) ? (
+          <button
+            onClick={() =>
+              this.props.destroyRecipeMeal(
+                this.props.recipe,
+                this.props.currentMeal
+              )
+            }
+            style={{ marginBottom: "10px" }}
+          >
+            Remove from Meal
+          </button>
+        ) : (
+          <button
+            onClick={() =>
+              this.props.postRecipeMeal(
+                this.props.recipe,
+                this.props.currentMeal
+              )
+            }
+            style={{ marginBottom: "10px" }}
+          >
+            Add to Meal
+          </button>
+        )}
         <h4 style={{ margin: "10px" }}>
           Course: {this.props.recipe.course} | Serves:{" "}
           {this.props.recipe.servings}
@@ -44,4 +60,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { postRecipeMeal })(RecipeDetails);
+export default connect(mapStateToProps, { postRecipeMeal, destroyRecipeMeal })(
+  RecipeDetails
+);
