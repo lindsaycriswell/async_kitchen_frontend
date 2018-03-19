@@ -8,18 +8,6 @@ class RecipeDetails extends React.Component {
   render() {
     return (
       <div>
-        <p>
-          Course: {this.props.recipe.course} | Serves:{" "}
-          {this.props.recipe.servings}
-        </p>
-        {this.props.recipe.prep_time > 0 ? (
-          <p>Prep Time: {this.props.recipe.prep_time} minutes</p>
-        ) : null}
-        {this.props.recipe.cook_time > 0 ? (
-          <p>Cook Time: {this.props.recipe.cook_time} minutes</p>
-        ) : null}
-        <IngredientContainer ingredients={this.props.recipe.ingredients} />
-        <DirectionContainer directions={this.props.recipe.directions} />
         <button
           onClick={() =>
             this.props.postRecipeMeal(this.props.recipe, this.props.currentMeal)
@@ -28,6 +16,22 @@ class RecipeDetails extends React.Component {
         >
           Add to Meal
         </button>
+        <h4 style={{ margin: "10px" }}>
+          Course: {this.props.recipe.course} | Serves:{" "}
+          {this.props.recipe.servings}
+        </h4>
+        {this.props.recipe.prep_time > 0 ? (
+          <h4 style={{ margin: "10px" }}>
+            Prep Time: {this.props.recipe.prep_time} minutes
+          </h4>
+        ) : null}
+        {this.props.recipe.cook_time > 0 ? (
+          <h4 style={{ margin: "10px" }}>
+            Cook Time: {this.props.recipe.cook_time} minutes
+          </h4>
+        ) : null}
+        <IngredientContainer ingredients={this.props.recipe.ingredients} />
+        <DirectionContainer directions={this.props.recipe.directions} />
       </div>
     );
   }

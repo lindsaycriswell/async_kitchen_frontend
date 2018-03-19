@@ -12,7 +12,7 @@ const RecipeCard = props => {
     <div className="four wide column">
       <Card style={{ marginBottom: "30px" }}>
         <Modal
-          style={{ marginLeft: "230px", marginTop: "70px" }}
+          style={{ marginLeft: "480px", marginTop: "90px" }}
           trigger={
             <div>
               <Image src={"./photos/" + getPhoto} />
