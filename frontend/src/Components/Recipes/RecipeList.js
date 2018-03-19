@@ -1,5 +1,6 @@
 import React from "react";
 import RecipeCard from "./RecipeCard";
+import MealModalContainer from "../Meals/MealModalContainer";
 
 const RecipeList = props => {
   let sortedRecipes = props.recipes.sort(function(a, b) {
@@ -19,6 +20,9 @@ const RecipeList = props => {
       {sortedRecipes.map(recipe => (
         <RecipeCard recipe={recipe} key={recipe.id} />
       ))}
+      {props.recipes.length > 0 ? (
+        <MealModalContainer recipes={sortedRecipes} />
+      ) : null}
     </div>
   );
 };
