@@ -7,7 +7,13 @@ export function postRecipeMeal(recipe, currentMeal) {
   return function(dispatch) {
     dispatch({ type: CREATING_NEW_RECIPE_MEAL });
     RecipeMealApi.postRecipeMeal(recipe, currentMeal).then(recipeMeal => {
-      dispatch({ type: CREATE_NEW_RECIPE_MEAL, payload: recipeMeal.recipe });
+      dispatch({
+        type: CREATE_NEW_RECIPE_MEAL,
+        payload: {
+          recipeMeal: recipeMeal.recipe,
+          currentMealRecipes: recipe
+        }
+      });
     });
   };
 }

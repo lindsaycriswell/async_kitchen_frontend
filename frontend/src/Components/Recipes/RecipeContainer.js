@@ -17,11 +17,13 @@ class RecipeContainer extends React.Component {
     let sectionStyle = {
       margin: 0,
       width: "100vw",
-
       height: "42vh",
       backgroundSize: "cover",
       backgroundImage: `url(${Image})`
     };
+
+    console.log(this.props.currentMealRecipes);
+    console.log(this.props.recipes);
 
     return (
       <div>
@@ -29,7 +31,7 @@ class RecipeContainer extends React.Component {
         <div style={{ backgroundColor: "teal" }}>
           {this.props.activeMeal ? (
             <div>
-              <MealContainer recipes={this.props.currentRecipes} />
+              <MealContainer recipes={this.props.currentMealRecipes} />
               <h1 style={{ color: "white", paddingTop: "20px" }}>
                 Pick some recipes to add to your meal!
               </h1>
@@ -59,11 +61,12 @@ function mapStateToProps(state) {
     recipes: state.recipes,
     currentMeal: state.currentMeal,
     currentRecipes: state.currentRecipes,
-    addedRecipe: state.addedRecipe,
-    activeMeal: state.activeMeal
+    activeMeal: state.activeMeal,
+    currentMealRecipes: state.currentMealRecipes
   };
 }
 
-export default connect(mapStateToProps, { fetchRecipes, postMeal })(
-  RecipeContainer
-);
+export default connect(mapStateToProps, {
+  fetchRecipes,
+  postMeal
+})(RecipeContainer);
