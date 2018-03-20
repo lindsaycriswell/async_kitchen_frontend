@@ -6,6 +6,7 @@ import {
   DESTROYING_RECIPE_MEAL,
   DESTROY_RECIPE_MEAL
 } from "../actions/recipemeals";
+import { ADD_DIRECTION } from "../actions/directions";
 
 // SWITCH NEWMEAL TO FALSE and reinstate on homepage when users are implemented
 
@@ -59,6 +60,12 @@ function rootReducer(state = defaultState, action) {
             recipe => recipe.id !== action.payload.id
           )
         }
+      };
+    case ADD_DIRECTION:
+      console.log(action.payload);
+      return {
+        ...state,
+        directionArray: [...state.directionArray, action.payload]
       };
     default:
       return state;

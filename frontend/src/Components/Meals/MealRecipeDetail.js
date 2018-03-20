@@ -1,6 +1,6 @@
 import React from "react";
 import TimeParser from "./../TimeParser";
-import MealDirectionList from "./MealDirectionList";
+import AddTimesToMealDirections from "./AddTimesToMealDirections";
 
 const MealRecipeDetail = props => {
   let startTime = new Date();
@@ -18,11 +18,7 @@ const MealRecipeDetail = props => {
         {props.recipe.name} takes {props.recipe.total_time} minutes to prepare -
         start at <TimeParser time={startTime} />
       </h3>
-      <MealDirectionList
-        recipe={props.recipe}
-        mealTime={props.mealTime}
-        startTime={startTime}
-      />
+      <AddTimesToMealDirections recipe={props.recipe} startTime={startTime} />
     </div>
   );
 };

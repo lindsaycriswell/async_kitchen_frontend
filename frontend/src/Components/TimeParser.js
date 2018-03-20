@@ -7,14 +7,14 @@ const TimeParser = props => {
     .split(":");
 
   let hour = parseInt(time[0], 10);
-  let minute = parseInt(time[1], 10);
-  let amPm = " A.M.";
+  let minute = time[1];
+  let amPm = " P.M.";
 
   if (hour === 0) {
     hour += 12;
+    amPm = " A.M.";
   } else if (hour > 12) {
     hour -= 12;
-    amPm = " P.M.";
   }
 
   return (
