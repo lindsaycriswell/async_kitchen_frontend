@@ -9,13 +9,15 @@ import {
 
 // SWITCH NEWMEAL TO FALSE and reinstate on homepage when users are implemented
 
+// SWITCH ACTIVEMEAL TO FALSE
 const defaultState = {
   recipes: [],
   newMeal: true,
-  activeMeal: false,
+  activeMeal: true,
   currentMeal: {
     recipes: []
-  }
+  },
+  directionArray: []
 };
 
 function rootReducer(state = defaultState, action) {

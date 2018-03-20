@@ -1,26 +1,27 @@
 import React from "react";
 import { Button, Modal } from "semantic-ui-react";
 import RecipeCard from "../Recipes/RecipeCard";
+import MealRecipeDetail from "./MealRecipeDetail";
 
 class MealModalContainer extends React.Component {
   state = {
-    mealTime: []
+    mealTime: {
+      hour: "",
+      minute: ""
+    }
   };
 
   handleChange = e => {
+    let time = e.target.value.split(":");
     this.setState({
-      mealTime: e.target.value
+      mealTime: {
+        hour: time[0],
+        minute: time[1]
+      }
     });
   };
 
-  // handleClick = e => {
-  //   e.preventDefault();
-  //   console.log("clicked");
-  // };
-
-  // figure out props
   render() {
-    console.log(this.props.recipes);
     return (
       <div className="sixteen wide column">
         <h3 style={{ color: "white" }}>What time would you like to eat?</h3>
@@ -47,16 +48,25 @@ class MealModalContainer extends React.Component {
           closeIcon
         >
           <Modal.Header>Get Cooking!</Modal.Header>
-          <Modal.Content scrolling>
-            {this.props.recipes.map(recipe => (
-              <RecipeCard recipe={recipe} key={recipe.id} />
-            ))}
-            <Modal.Description>
+          <div>
+            <Modal.Content image scrolling>
               {this.props.recipes.map(recipe => (
                 <RecipeCard recipe={recipe} key={recipe.id} />
               ))}
-            </Modal.Description>
-          </Modal.Content>
+              <Modal.Description>
+                {this.props.recipes.map(recipe => (
+                  <MealRecipeDetail
+                    recipe={recipe}
+                    key={recipe.id}
+                    mealTime={this.state.mealTime}
+                  />
+                ))}
+                <h1 style={{ margin: "15px", textAlign: "center" }}>
+                  Directions
+                </h1>
+              </Modal.Description>
+            </Modal.Content>
+          </div>
         </Modal>
       </div>
     );
