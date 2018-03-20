@@ -1,4 +1,5 @@
 import React from "react";
+import TimeParser from "./../TimeParser";
 
 class MealDirection extends React.Component {
   state = {
@@ -28,7 +29,6 @@ class MealDirection extends React.Component {
       displayStyle = { display: "inline" };
     }
 
-    console.log(this.state.completed);
     return (
       <div>
         <input
@@ -41,7 +41,20 @@ class MealDirection extends React.Component {
             width: "2vw"
           }}
         />
-        <h3 style={displayStyle}>{this.props.direction.description}</h3>
+
+        <h3 style={displayStyle}>
+          <TimeParser time={new Date(this.props.direction.time)} /> -{" "}
+          {this.props.direction.description}
+        </h3>
+        <p
+          style={{
+            marginLeft: "50px",
+            marginBottom: "20px",
+            fontStyle: "italic"
+          }}
+        >
+          {this.props.direction.recipe}
+        </p>
       </div>
     );
   }
