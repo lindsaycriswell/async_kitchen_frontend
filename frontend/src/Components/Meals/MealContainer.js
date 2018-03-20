@@ -8,8 +8,8 @@ const MealContainer = props => {
       {props.recipes.length > 0 ? (
         <div>
           <h1 style={{ color: "white", paddingTop: "20px" }}>Current Meal</h1>
-          <RecipeList recipes={props.recipes} />
           <MealModalContainer recipes={props.recipes} />
+          <RecipeList recipes={props.recipes} />
         </div>
       ) : null}
     </div>

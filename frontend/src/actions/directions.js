@@ -1,10 +1,12 @@
 export const ADD_DIRECTION = "ADD_DIRECTION";
 
-export function addDirection(direction, time) {
+export function addDirection(recipe, description, doAhead, time) {
   return {
     type: "ADD_DIRECTION",
     payload: {
-      direction: direction,
+      recipe: recipe,
+      description: description,
+      doAhead: doAhead,
       time: time
     }
   };

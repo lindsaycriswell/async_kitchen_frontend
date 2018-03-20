@@ -9,8 +9,8 @@ const RecipeCard = props => {
     .join("-")}.jpg`;
 
   return (
-    <div className="four wide column">
-      <Card style={{ marginBottom: "30px" }}>
+    <div className="three wide column">
+      <Card style={{ marginBottom: "50px", marginLeft: "70px" }}>
         <Modal
           style={{ marginLeft: "480px", marginTop: "90px" }}
           trigger={

@@ -62,7 +62,6 @@ function rootReducer(state = defaultState, action) {
         }
       };
     case ADD_DIRECTION:
-      console.log(action.payload);
       return {
         ...state,
         directionArray: [...state.directionArray, action.payload]
