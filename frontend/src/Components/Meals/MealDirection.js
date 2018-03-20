@@ -36,9 +36,7 @@ class MealDirection extends React.Component {
           type="checkbox"
           style={{
             marginLeft: "10px",
-            marginRight: "5px",
-            height: "2vh",
-            width: "2vw"
+            marginRight: "10px"
           }}
         />
 
