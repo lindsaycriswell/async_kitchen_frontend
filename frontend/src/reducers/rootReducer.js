@@ -64,7 +64,12 @@ function rootReducer(state = defaultState, action) {
     case ADD_DIRECTION:
       return {
         ...state,
-        directionArray: [...state.directionArray, action.payload]
+        directionArray: [
+          ...state.directionArray.filter(
+            direction => direction.description !== action.payload.description
+          ),
+          action.payload
+        ]
       };
     default:
       return state;
