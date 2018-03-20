@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Modal } from "semantic-ui-react";
 import RecipeCard from "../Recipes/RecipeCard";
 import MealRecipeDetail from "./MealRecipeDetail";
+import TimeParser from "./../TimeParser";
 
 class MealModalContainer extends React.Component {
   state = {
@@ -13,6 +14,7 @@ class MealModalContainer extends React.Component {
 
   handleChange = e => {
     let time = e.target.value.split(":");
+
     this.setState({
       mealTime: {
         hour: time[0],
@@ -22,6 +24,10 @@ class MealModalContainer extends React.Component {
   };
 
   render() {
+    let endTime = new Date();
+    endTime.setHours(this.state.mealTime.hour);
+    endTime.setMinutes(this.state.mealTime.minute);
+
     return (
       <div className="sixteen wide column">
         <h3 style={{ color: "white" }}>What time would you like to eat?</h3>
@@ -62,8 +68,11 @@ class MealModalContainer extends React.Component {
                   />
                 ))}
                 <h1 style={{ margin: "15px", textAlign: "center" }}>
-                  Directions
+                  Directions - MDL goes here?
                 </h1>
+                <h2 style={{ margin: "10px", textAlign: "left" }}>
+                  Eat at <TimeParser time={endTime} />
+                </h2>
               </Modal.Description>
             </Modal.Content>
           </div>
