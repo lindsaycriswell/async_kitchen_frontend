@@ -14,7 +14,7 @@ const MealRecipeDetail = props => {
 
   return (
     <div>
-      <h3>
+      <h3 style={{ marginLeft: "50px" }}>
         {props.recipe.name} takes {props.recipe.total_time} minutes to prepare -
         start at <TimeParser time={startTime} />
       </h3>

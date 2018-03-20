@@ -69,11 +69,33 @@ class MealModalContainer extends React.Component {
                     mealTime={this.state.mealTime}
                   />
                 ))}
-                <h1 style={{ marginTop: "30px", textAlign: "center" }}>
+                <h1
+                  style={{
+                    marginTop: "30px",
+                    marginBottom: "0px",
+                    textAlign: "center",
+                    color: "blue"
+                  }}
+                >
                   Directions
                 </h1>
+                <h4
+                  style={{
+                    textAlign: "center",
+                    marginTop: "0px"
+                  }}
+                >
+                  Directions in <span style={{ color: "green" }}>GREEN</span>{" "}
+                  can be done ahead. Start chopping!
+                </h4>
                 <MealDirectionList />
-                <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+                <h2
+                  style={{
+                    textAlign: "center",
+                    marginBottom: "20px",
+                    color: "blue"
+                  }}
+                >
                   Eat at <TimeParser time={endTime} />
                 </h2>
               </Modal.Description>
