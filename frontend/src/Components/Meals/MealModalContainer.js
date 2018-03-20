@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Modal } from "semantic-ui-react";
 import RecipeCard from "../Recipes/RecipeCard";
 import MealRecipeDetail from "./MealRecipeDetail";
+import MealDirectionList from "./MealDirectionList";
 import TimeParser from "./../TimeParser";
 
 class MealModalContainer extends React.Component {
@@ -39,7 +40,8 @@ class MealModalContainer extends React.Component {
         <div />
 
         <Modal
-          style={{ marginLeft: "480px", marginTop: "90px" }}
+          size="large"
+          style={{ marginLeft: "400px", marginTop: "90px" }}
           trigger={
             <Button
               size="medium"
@@ -55,7 +57,7 @@ class MealModalContainer extends React.Component {
         >
           <Modal.Header>Get Cooking!</Modal.Header>
           <div>
-            <Modal.Content image scrolling>
+            <Modal.Content className="ui grid">
               {this.props.recipes.map(recipe => (
                 <RecipeCard recipe={recipe} key={recipe.id} />
               ))}
@@ -67,10 +69,11 @@ class MealModalContainer extends React.Component {
                     mealTime={this.state.mealTime}
                   />
                 ))}
-                <h1 style={{ margin: "15px", textAlign: "center" }}>
-                  Directions - MDL goes here?
+                <h1 style={{ marginTop: "30px", textAlign: "center" }}>
+                  Directions
                 </h1>
-                <h2 style={{ margin: "10px", textAlign: "left" }}>
+                <MealDirectionList />
+                <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
                   Eat at <TimeParser time={endTime} />
                 </h2>
               </Modal.Description>

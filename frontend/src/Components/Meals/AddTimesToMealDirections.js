@@ -15,17 +15,17 @@ class AddTimesToMealDirections extends React.Component {
 
     for (let i = 0; i < this.props.recipe.directions.length; i++) {
       this.props.addDirection(
+        this.props.recipe.name,
         this.props.recipe.directions[i].description,
+        this.props.recipe.directions[i].do_ahead,
         newTime.setMinutes(startMinutes + minsToAdd)
       );
       minsToAdd += this.props.recipe.directions[i].time;
-      console.log(newTime);
     }
   }
 
   render() {
-    console.log(this.props.recipe.directions);
-    return <div>MDL</div>;
+    return <div />;
   }
 }
 

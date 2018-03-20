@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import NavBar from "./Components/NavBar";
+// import NavBar from "./Components/NavBar";
 import RecipeContainer from "./Components/Recipes/RecipeContainer";
 import Image from "./photos/homepage.jpg";
 import { connect } from "react-redux";
@@ -19,7 +19,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <NavBar />
+        {
+          // <NavBar />
+        }
 
         {this.props.newMeal ? (
           <div>

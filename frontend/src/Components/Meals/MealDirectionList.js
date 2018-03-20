@@ -1,16 +1,33 @@
 import React from "react";
 import { connect } from "react-redux";
-// import { addDirection } from "../../actions/directions";
+import MealDirection from "./MealDirection";
 
 const MealDirectionList = props => {
-  // console.log(props.addDirection);
-  // console.log(props.recipe);
-  // console.log(props.mealTime);
-  // console.log(props.startTime);
-  // // console.log(props.mealTime.split(":"));
-  // return <div>MDL</div>;
+  let sortedDirections = props.directionArray.sort(function(a, b) {
+    let timeA = a.time;
+    let timeB = b.time;
+    if (timeA < timeB) {
+      return -1;
+    }
+    if (timeA > timeB) {
+      return 1;
+    }
+    return 0;
+  });
+
+  return (
+    <div>
+      {sortedDirections.map(direction => (
+        <MealDirection direction={direction} key={direction.description} />
+      ))}
+    </div>
+  );
 };
 
-// export default connect(null, { addDirection })(MealDirectionList);
+function mapStateToProps(state) {
+  return {
+    directionArray: state.directionArray
+  };
+}
 
-export default MealDirectionList;
+export default connect(mapStateToProps)(MealDirectionList);
