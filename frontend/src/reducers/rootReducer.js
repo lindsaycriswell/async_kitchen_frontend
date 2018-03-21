@@ -18,7 +18,8 @@ const defaultState = {
   currentMeal: {
     recipes: []
   },
-  directionArray: []
+  directionArray: [],
+  filters: {}
 };
 
 function rootReducer(state = defaultState, action) {

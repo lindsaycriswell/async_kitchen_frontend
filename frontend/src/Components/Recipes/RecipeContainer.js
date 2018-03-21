@@ -32,7 +32,7 @@ class RecipeContainer extends React.Component {
               <h1 style={{ color: "white", paddingTop: "20px" }}>
                 Pick some recipes to add to your meal!
               </h1>
-              <Filters />
+              <Filters recipes={this.props.recipes} />
               <RecipeList recipes={this.props.recipes} />
             </div>
           ) : (
