@@ -5,12 +5,14 @@ import Image from "./../../photos/recipe-page.jpg";
 import MealContainer from "./../Meals/MealContainer";
 import { connect } from "react-redux";
 import { fetchRecipes } from "../../actions/recipes";
+import { fetchIngredients } from "../../actions/ingredients";
 import { postMeal } from "../../actions/meals";
 import { Button } from "semantic-ui-react";
 
 class RecipeContainer extends React.Component {
   componentDidMount() {
     this.props.fetchRecipes();
+    this.props.fetchIngredients();
   }
 
   render() {
@@ -32,7 +34,10 @@ class RecipeContainer extends React.Component {
               <h1 style={{ color: "white", paddingTop: "20px" }}>
                 Pick some recipes to add to your meal!
               </h1>
-              <Filters recipes={this.props.recipes} />
+              <Filters
+                recipes={this.props.recipes}
+                ingredients={this.props.ingredients}
+              />
               <RecipeList recipes={this.props.recipes} />
             </div>
           ) : (
@@ -56,6 +61,7 @@ class RecipeContainer extends React.Component {
 function mapStateToProps(state) {
   return {
     recipes: state.recipes,
+    ingredients: state.ingredients,
     currentMeal: state.currentMeal,
     activeMeal: state.activeMeal
   };
@@ -63,5 +69,6 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
   fetchRecipes,
+  fetchIngredients,
   postMeal
 })(RecipeContainer);

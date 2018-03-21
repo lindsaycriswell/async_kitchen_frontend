@@ -2,22 +2,39 @@ import React from "react";
 import { Input, Dropdown } from "semantic-ui-react";
 
 const Filters = props => {
-  const allCourses = props.recipes.map(recipe => recipe.course);
-  const uniqueCourses = [];
-
-  for (var i = 0; i < allCourses.length; i++) {
-    if (allCourses.indexOf(allCourses[i]) === i) {
-      uniqueCourses.push({
-        key: allCourses[i],
-        value: allCourses[i],
-        text: allCourses[i]
-      });
+  function dedupe(array) {
+    let newArray = [];
+    for (var i = 0; i < array.length; i++) {
+      if (array.indexOf(array[i]) === i) {
+        newArray.push({
+          key: array[i],
+          value: array[i],
+          text: array[i]
+        });
+      }
     }
-  }
-  console.log(uniqueCourses);
+    console.log(newArray);
+    return newArray.sort(function(a, b) {
+      let textA = a.text.toUpperCase();
+      let textB = b.text.toUpperCase();
+      if (textA < textB) {
+        return -1;
+      }
+      if (textA > textB) {
+        return 1;
+      }
 
-  // const allRecipes = props.recipes.map(recipe => recipe.ingredients);
-  // console.log(allRecipes.join());
+      return 0;
+    });
+  }
+
+  const allCourses = props.recipes.map(recipe => recipe.course);
+  const uniqueCourses = dedupe(allCourses);
+
+  const allIngredients = props.ingredients.map(
+    ingredient => ingredient.search_name
+  );
+  const uniqueIngredients = dedupe(allIngredients);
 
   return (
     <div style={{ marginBottom: "20px" }}>
@@ -35,9 +52,10 @@ const Filters = props => {
         style={{ width: "14vw", marginLeft: "10px" }}
         placeholder="Filter by ingredient"
         compact
+        multiple
         search
         selection
-        options={[]}
+        options={uniqueIngredients}
       />
     </div>
   );

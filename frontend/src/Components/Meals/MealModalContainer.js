@@ -79,15 +79,16 @@ class MealModalContainer extends React.Component {
                 >
                   Directions
                 </h1>
-                <h4
+                <h3
                   style={{
                     textAlign: "center",
                     marginTop: "0px"
                   }}
                 >
                   Directions in <span style={{ color: "green" }}>GREEN</span>{" "}
-                  can be done ahead. Start chopping!
-                </h4>
+                  can be done ahead. <br />Start chopping! Mise en place is your
+                  best friend.
+                </h3>
                 <MealDirectionList />
                 <h2
                   style={{
