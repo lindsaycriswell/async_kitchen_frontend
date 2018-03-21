@@ -1,4 +1,8 @@
 import { FETCHED_RECIPES, FETCHING_RECIPES } from "../actions/recipes";
+import {
+  FETCHED_INGREDIENTS,
+  FETCHING_INGREDIENTS
+} from "../actions/ingredients";
 import { CREATE_NEW_MEAL, CREATING_NEW_MEAL } from "../actions/meals";
 import {
   CREATE_NEW_RECIPE_MEAL,
@@ -13,6 +17,7 @@ import { ADD_DIRECTION } from "../actions/directions";
 // SWITCH ACTIVEMEAL TO FALSE
 const defaultState = {
   recipes: [],
+  ingredients: [],
   newMeal: true,
   activeMeal: true,
   currentMeal: {
@@ -28,6 +33,10 @@ function rootReducer(state = defaultState, action) {
       return state;
     case FETCHED_RECIPES:
       return { ...state, recipes: action.payload };
+    case FETCHING_INGREDIENTS:
+      return state;
+    case FETCHED_INGREDIENTS:
+      return { ...state, ingredients: action.payload };
     case CREATING_NEW_MEAL:
       return state;
     case CREATE_NEW_MEAL:
