@@ -59,7 +59,12 @@ function rootReducer(state = defaultState, action) {
           recipes: state.currentMeal.recipes.filter(
             recipe => recipe.id !== action.payload.id
           )
-        }
+        },
+        directionArray: [
+          ...state.directionArray.filter(
+            direction => direction.recipe !== action.payload.name
+          )
+        ]
       };
     case ADD_DIRECTION:
       return {
