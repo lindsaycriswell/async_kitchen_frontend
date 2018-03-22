@@ -2,7 +2,15 @@ import React from "react";
 import RecipeCard from "./RecipeCard";
 
 const RecipeList = props => {
-  let getRecipesWithIngredientFilters = [];
+  // FILTERS FROM STATE
+  let recFilteredByNameAndCourse = props.recipes.filter(
+    recipe =>
+      recipe.name.toLowerCase().includes(props.filters.search.toLowerCase()) &&
+      recipe.course.toLowerCase().includes(props.filters.course.toLowerCase())
+  );
+
+  // PARSE INGREDIENT FILTERS
+  let getRecWithIngFilters = [];
   for (var i = 0; i < props.recipes.length; i++) {
     for (var j = 0; j < props.recipes[i].ingredients.length; j++) {
       if (
@@ -10,39 +18,38 @@ const RecipeList = props => {
           props.recipes[i].ingredients[j].search_name
         )
       ) {
-        getRecipesWithIngredientFilters.push(props.recipes[i]);
+        getRecWithIngFilters.push(props.recipes[i]);
       }
     }
   }
-  console.log("length", props.filters.ingredients.length);
-  console.log(getRecipesWithIngredientFilters);
 
-  let recipeCounts = {};
+  let getRecIds = {};
 
-  for (var k = 0; k < getRecipesWithIngredientFilters.length; k++) {
-    !recipeCounts[getRecipesWithIngredientFilters[k].id]
-      ? (recipeCounts[getRecipesWithIngredientFilters[k].id] = 1)
-      : (recipeCounts[getRecipesWithIngredientFilters[k].id] += 1);
+  for (var k = 0; k < getRecWithIngFilters.length; k++) {
+    !getRecIds[getRecWithIngFilters[k].id]
+      ? (getRecIds[getRecWithIngFilters[k].id] = 1)
+      : (getRecIds[getRecWithIngFilters[k].id] += 1);
+  }
+  getRecIds = Object.keys(getRecIds).filter(function(key) {
+    return getRecIds[key] === props.filters.ingredients.length;
+  });
+
+  // COMBINE ALL FILTERS
+  let allRelevantRecipes = [];
+  for (var l = 0; l < getRecIds.length; l++) {
+    for (var m = 0; m < recFilteredByNameAndCourse.length; m++) {
+      recFilteredByNameAndCourse[m].id === parseInt(getRecIds[l])
+        ? allRelevantRecipes.push(recFilteredByNameAndCourse[m])
+        : null;
+    }
   }
 
-  // FILTER!
-  // Object.keys(recipeCounts).filter(function(key) {
-  //   return recipeCounts[key] === props.filters.ingredients.length;
-  // });
+  let relevantRecipes = [];
+  allRelevantRecipes.length > 0
+    ? (relevantRecipes = allRelevantRecipes)
+    : (relevantRecipes = recFilteredByNameAndCourse);
 
-  console.log(recipeCounts);
-
-  // Object.keys(countries).filter(function(key) {
-  //   // Countries under 1000000000
-  //   return countries[key] <= 1000000000;
-  // });
-  // console.log(countries);
-
-  let relevantRecipes = props.recipes.filter(
-    recipe =>
-      recipe.name.toLowerCase().includes(props.filters.search.toLowerCase()) &&
-      recipe.course.toLowerCase().includes(props.filters.course.toLowerCase())
-  );
+  //SORT RECIPES
 
   let sortedRecipes = relevantRecipes.sort(function(a, b) {
     let nameA = a.name.toUpperCase();
