@@ -17,6 +17,7 @@ import { ADD_DIRECTION } from "../actions/directions";
 // SWITCH ACTIVEMEAL TO FALSE
 const defaultState = {
   recipes: [],
+  recipesLoading: false,
   ingredients: [],
   newMeal: true,
   activeMeal: true,
@@ -29,9 +30,9 @@ const defaultState = {
 function rootReducer(state = defaultState, action) {
   switch (action.type) {
     case FETCHING_RECIPES:
-      return state;
+      return { ...state, recipesLoading: true };
     case FETCHED_RECIPES:
-      return { ...state, recipes: action.payload };
+      return { ...state, recipes: action.payload, recipesLoading: false };
     case FETCHING_INGREDIENTS:
       return state;
     case FETCHED_INGREDIENTS:
