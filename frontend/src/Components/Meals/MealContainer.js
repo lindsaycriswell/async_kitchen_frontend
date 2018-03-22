@@ -1,5 +1,5 @@
 import React from "react";
-import RecipeList from "../Recipes/RecipeList";
+import MealRecipeList from "./MealRecipeList";
 import MealModalContainer from "./MealModalContainer";
 
 const MealContainer = props => {
@@ -9,7 +9,7 @@ const MealContainer = props => {
         <div>
           <h1 style={{ color: "white", paddingTop: "20px" }}>Current Meal</h1>
           <MealModalContainer recipes={props.recipes} />
-          <RecipeList recipes={props.recipes} />
+          <MealRecipeList recipes={props.recipes} />
         </div>
       ) : null}
     </div>
