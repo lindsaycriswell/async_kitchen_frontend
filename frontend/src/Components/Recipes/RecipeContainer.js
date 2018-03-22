@@ -1,13 +1,13 @@
 import React from "react";
 import Filters from "../Filters";
 import RecipeList from "./RecipeList";
-import Image from "./../../photos/recipe-page.jpg";
+import image from "./../../photos/recipe-page.jpg";
 import MealContainer from "./../Meals/MealContainer";
 import { connect } from "react-redux";
 import { fetchRecipes } from "../../actions/recipes";
 import { fetchIngredients } from "../../actions/ingredients";
 import { postMeal } from "../../actions/meals";
-import { Button } from "semantic-ui-react";
+import { Button, Dimmer, Loader, Image, Segment } from "semantic-ui-react";
 
 class RecipeContainer extends React.Component {
   state = {
@@ -43,43 +43,56 @@ class RecipeContainer extends React.Component {
       width: "100vw",
       height: "42vh",
       backgroundSize: "cover",
-      backgroundImage: `url(${Image})`
+      backgroundImage: `url(${image})`
     };
 
+    console.log(this.props.recipesLoading);
     return (
       <div>
-        <div style={sectionStyle} />
-        <div style={{ backgroundColor: "teal" }}>
-          {this.props.activeMeal ? (
-            <div>
-              <MealContainer recipes={this.props.currentMeal.recipes} />
-              <h1 style={{ color: "white", paddingTop: "20px" }}>
-                Pick some recipes to add to your meal!
-              </h1>
-              <Filters
-                recipes={this.props.recipes}
-                ingredients={this.props.ingredients}
-                handleChange={this.handleChange}
-              />
-              <RecipeList
-                recipes={this.props.recipes}
-                ingredients={this.props.ingredients}
-                filters={this.state}
-              />
+        {!this.props.recipesLoading ? (
+          <div>
+            <div style={sectionStyle} />
+            <div style={{ backgroundColor: "teal" }}>
+              {this.props.activeMeal ? (
+                <div>
+                  <MealContainer recipes={this.props.currentMeal.recipes} />
+                  <h1 style={{ color: "white", paddingTop: "20px" }}>
+                    Pick some recipes to add to your meal!
+                  </h1>
+                  <Filters
+                    recipes={this.props.recipes}
+                    ingredients={this.props.ingredients}
+                    handleChange={this.handleChange}
+                  />
+                  <RecipeList
+                    recipes={this.props.recipes}
+                    ingredients={this.props.ingredients}
+                    filters={this.state}
+                  />
+                </div>
+              ) : (
+                <Button
+                  size="massive"
+                  style={{
+                    marginTop: "50px",
+                    marginBottom: "500px"
+                  }}
+                  onClick={this.props.postMeal}
+                >
+                  Start a New Meal!
+                </Button>
+              )}
             </div>
-          ) : (
-            <Button
-              size="massive"
-              style={{
-                marginTop: "50px",
-                marginBottom: "500px"
-              }}
-              onClick={this.props.postMeal}
-            >
-              Start a New Meal!
-            </Button>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div style={{ maring: "100px" }}>
+            <Segment>
+              <Dimmer active>
+                <Loader size="massive">Deliciousness Awaits!</Loader>
+              </Dimmer>
+            </Segment>
+          </div>
+        )}
       </div>
     );
   }
@@ -88,6 +101,7 @@ class RecipeContainer extends React.Component {
 function mapStateToProps(state) {
   return {
     recipes: state.recipes,
+    recipesLoading: state.recipesLoading,
     ingredients: state.ingredients,
     currentMeal: state.currentMeal,
     activeMeal: state.activeMeal
