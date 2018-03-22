@@ -10,10 +10,32 @@ import { postMeal } from "../../actions/meals";
 import { Button } from "semantic-ui-react";
 
 class RecipeContainer extends React.Component {
+  state = {
+    search: "",
+    course: "",
+    ingredients: []
+  };
+
   componentDidMount() {
     this.props.fetchRecipes();
     this.props.fetchIngredients();
   }
+
+  handleChange = (e, data) => {
+    if (e.target.name) {
+      this.setState({
+        search: e.target.value
+      });
+    } else if (data.name === "course") {
+      this.setState({
+        course: data.value
+      });
+    } else if (data.name === "ingredients") {
+      this.setState({
+        ingredients: data.value
+      });
+    }
+  };
 
   render() {
     let sectionStyle = {
@@ -37,8 +59,13 @@ class RecipeContainer extends React.Component {
               <Filters
                 recipes={this.props.recipes}
                 ingredients={this.props.ingredients}
+                handleChange={this.handleChange}
               />
-              <RecipeList recipes={this.props.recipes} />
+              <RecipeList
+                recipes={this.props.recipes}
+                ingredients={this.props.ingredients}
+                filters={this.state}
+              />
             </div>
           ) : (
             <Button

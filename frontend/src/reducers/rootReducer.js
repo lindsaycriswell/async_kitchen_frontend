@@ -11,7 +11,6 @@ import {
   DESTROY_RECIPE_MEAL
 } from "../actions/recipemeals";
 import { ADD_DIRECTION } from "../actions/directions";
-import { ADD_FILTER } from "../actions/filters";
 
 // SWITCH NEWMEAL TO FALSE and reinstate on homepage when users are implemented
 
@@ -24,8 +23,7 @@ const defaultState = {
   currentMeal: {
     recipes: []
   },
-  directionArray: [],
-  filters: {}
+  directionArray: []
 };
 
 function rootReducer(state = defaultState, action) {
@@ -86,11 +84,6 @@ function rootReducer(state = defaultState, action) {
           ),
           action.payload
         ]
-      };
-    case ADD_FILTER:
-      return {
-        ...state,
-        filters: action.payload
       };
     default:
       return state;
