@@ -45,12 +45,11 @@ const RecipeList = props => {
   }
 
   let relevantRecipes = [];
-  allRelevantRecipes.length > 0
-    ? (relevantRecipes = allRelevantRecipes)
-    : (relevantRecipes = recFilteredByNameAndCourse);
+  allRelevantRecipes.length === 0 && props.filters.ingredients.length < 1
+    ? (relevantRecipes = recFilteredByNameAndCourse)
+    : (relevantRecipes = allRelevantRecipes);
 
   //SORT RECIPES
-
   let sortedRecipes = relevantRecipes.sort(function(a, b) {
     let nameA = a.name.toUpperCase();
     let nameB = b.name.toUpperCase();
@@ -64,10 +63,17 @@ const RecipeList = props => {
   });
 
   return (
-    <div className="ui grid">
-      {sortedRecipes.map(recipe => (
-        <RecipeCard recipe={recipe} key={recipe.id} />
-      ))}
+    <div>
+      {sortedRecipes.length === 0 ? (
+        <h3 style={{ color: "white", margin: "20px" }}>
+          No matching recipes. Try using fewer search terms.
+        </h3>
+      ) : null}
+      <div className="ui grid">
+        {sortedRecipes.map(recipe => (
+          <RecipeCard recipe={recipe} key={recipe.id} />
+        ))}
+      </div>
     </div>
   );
 };
