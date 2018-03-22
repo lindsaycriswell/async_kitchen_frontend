@@ -65,7 +65,9 @@ const RecipeList = props => {
   return (
     <div>
       {sortedRecipes.length === 0 ? (
-        <h3 style={{ color: "white", margin: "20px" }}>
+        <h3
+          style={{ color: "white", marginTop: "100px", marginBottom: "400px" }}
+        >
           No matching recipes. Try using fewer search terms.
         </h3>
       ) : null}

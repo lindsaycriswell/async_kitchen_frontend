@@ -4,14 +4,16 @@ import MealModalContainer from "./MealModalContainer";
 
 const MealContainer = props => {
   return (
-    <div>
+    <div style={{ backgroundColor: "teal" }}>
       {props.recipes.length > 0 ? (
-        <div>
+        <div style={{ backgroundColor: "teal" }}>
           <h1 style={{ color: "white", paddingTop: "20px" }}>Current Meal</h1>
           <MealModalContainer recipes={props.recipes} />
           <MealRecipeList recipes={props.recipes} />
         </div>
-      ) : null}
+      ) : (
+        <div style={{ backgroundColor: "teal" }} />
+      )}
     </div>
   );
 };

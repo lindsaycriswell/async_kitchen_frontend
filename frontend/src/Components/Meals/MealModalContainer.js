@@ -4,6 +4,7 @@ import RecipeCard from "../Recipes/RecipeCard";
 import MealRecipeDetail from "./MealRecipeDetail";
 import MealDirectionList from "./MealDirectionList";
 import TimeParser from "./../TimeParser";
+import ShoppingListModalContainer from "./../ShoppingList/ShoppingListModalContainer";
 
 class MealModalContainer extends React.Component {
   state = {
@@ -29,11 +30,11 @@ class MealModalContainer extends React.Component {
   };
 
   render() {
-    console.log(this.state.mealTime);
+    // console.log(this.state.mealTime);
     let endTime = new Date();
     endTime.setHours(this.state.mealTime.hour);
     endTime.setMinutes(this.state.mealTime.minute);
-    console.log(endTime);
+    // console.log(endTime);
 
     return (
       <div className="sixteen wide column">
@@ -110,72 +111,7 @@ class MealModalContainer extends React.Component {
             </Modal.Content>
           </div>
         </Modal>
-        <div />
-        <Modal
-          size="large"
-          style={{ marginLeft: "400px", marginTop: "10px" }}
-          trigger={
-            <Button
-              size="medium"
-              style={{
-                marginBottom: "40px"
-              }}
-            >
-              Create a shopping list for this meal
-            </Button>
-          }
-          closeIcon
-        >
-          <Modal.Header>Create a shopping list for your meal</Modal.Header>
-          {
-            // <div>
-            //   <Modal.Content className="ui grid">
-            //     {this.props.recipes.map(recipe => (
-            //       <RecipeCard recipe={recipe} key={recipe.id} />
-            //     ))}
-            //     <Modal.Description>
-            //       {this.props.recipes.map(recipe => (
-            //         <MealRecipeDetail
-            //           recipe={recipe}
-            //           key={recipe.id}
-            //           mealTime={this.state.mealTime}
-            //         />
-            //       ))}
-            //       <h1
-            //         style={{
-            //           marginTop: "30px",
-            //           marginBottom: "0px",
-            //           textAlign: "center",
-            //           color: "blue"
-            //         }}
-            //       >
-            //         Directions
-            //       </h1>
-            //       <h3
-            //         style={{
-            //           textAlign: "center",
-            //           marginTop: "0px"
-            //         }}
-            //       >
-            //         Directions in <span style={{ color: "green" }}>GREEN</span>{" "}
-            //         can be done ahead. <br />Start chopping! Mise en place is your
-            //         best friend.
-            //       </h3>
-            //       <MealDirectionList />
-            //       <h2
-            //         style={{
-            //           textAlign: "center",
-            //           marginBottom: "20px",
-            //           color: "blue"
-            //         }}
-            //       >
-            //         Eat at <TimeParser time={endTime} />
-            //       </h2>
-            //     </Modal.Description>
-            //   </Modal.Content>
-            // </div>
-          }
-        </Modal>
+        <ShoppingListModalContainer />
       </div>
     );
   }
