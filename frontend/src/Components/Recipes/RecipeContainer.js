@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { fetchRecipes } from "../../actions/recipes";
 import { fetchIngredients } from "../../actions/ingredients";
 import { postMeal } from "../../actions/meals";
-import { Button, Dimmer, Loader, Image, Segment } from "semantic-ui-react";
+import { Button, Dimmer, Loader, Segment } from "semantic-ui-react";
 
 class RecipeContainer extends React.Component {
   state = {
@@ -39,14 +39,13 @@ class RecipeContainer extends React.Component {
 
   render() {
     let sectionStyle = {
-      margin: 0,
+      marginBottom: "0px",
       width: "100vw",
       height: "42vh",
       backgroundSize: "cover",
       backgroundImage: `url(${image})`
     };
 
-    console.log(this.props.recipesLoading);
     return (
       <div>
         {!this.props.recipesLoading ? (
@@ -85,10 +84,10 @@ class RecipeContainer extends React.Component {
             </div>
           </div>
         ) : (
-          <div style={{ maring: "100px" }}>
-            <Segment>
+          <div>
+            <Segment size="massive" style={{ height: "100vh" }}>
               <Dimmer active>
-                <Loader size="massive">Deliciousness Awaits!</Loader>
+                <Loader>Deliciousness Awaits!</Loader>
               </Dimmer>
             </Segment>
           </div>
