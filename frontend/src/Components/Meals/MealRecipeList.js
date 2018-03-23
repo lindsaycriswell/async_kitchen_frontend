@@ -15,13 +15,9 @@ const MealRecipeList = props => {
     return 0;
   });
 
-  return (
-    <div className="ui grid">
-      {sortedRecipes.map(recipe => (
-        <RecipeCard recipe={recipe} key={recipe.id} />
-      ))}
-    </div>
-  );
+  return sortedRecipes.map(recipe => (
+    <RecipeCard recipe={recipe} key={recipe.id} />
+  ));
 };
 
 export default MealRecipeList;

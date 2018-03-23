@@ -13,6 +13,7 @@ const ShoppingListModalContainer = props => {
         trigger={
           <Button
             size="medium"
+            fluid
             style={{
               marginBottom: "40px"
             }}

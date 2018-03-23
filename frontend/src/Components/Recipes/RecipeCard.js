@@ -10,7 +10,7 @@ const RecipeCard = props => {
 
   return (
     <div className="three wide column">
-      <Card style={{ marginBottom: "50px", marginLeft: "70px" }}>
+      <Card>
         <Modal
           style={{ marginLeft: "480px", marginTop: "90px" }}
           trigger={
@@ -22,7 +22,8 @@ const RecipeCard = props => {
                     color: "blue",
                     textDecoration: "underline",
                     height: "5vh",
-                    marginTop: "10px"
+                    marginTop: "10px",
+                    textAlign: "center"
                   }}
                 >
                   {props.recipe.name}

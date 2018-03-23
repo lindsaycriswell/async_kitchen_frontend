@@ -12,15 +12,12 @@ import {
 } from "../actions/recipemeals";
 import { ADD_DIRECTION } from "../actions/directions";
 
-// SWITCH NEWMEAL TO FALSE and reinstate on homepage when users are implemented
-
 // SWITCH ACTIVEMEAL TO FALSE
 const defaultState = {
+  activeMeal: true,
   recipes: [],
   recipesLoading: false,
   ingredients: [],
-  newMeal: true,
-  activeMeal: true,
   currentMeal: {
     recipes: []
   },

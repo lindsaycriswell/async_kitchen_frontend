@@ -63,15 +63,13 @@ const RecipeList = props => {
   });
 
   return (
-    <div>
+    <div className="row">
       {sortedRecipes.length === 0 ? (
-        <h3
-          style={{ color: "white", marginTop: "100px", marginBottom: "400px" }}
-        >
+        <h3 style={{ color: "white" }}>
           No matching recipes. Try using fewer search terms.
         </h3>
       ) : null}
-      <div className="ui grid">
+      <div className="ui grid centered">
         {sortedRecipes.map(recipe => (
           <RecipeCard recipe={recipe} key={recipe.id} />
         ))}
