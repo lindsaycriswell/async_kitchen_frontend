@@ -25,7 +25,7 @@ class AddTimesToMealDirections extends React.Component {
   }
 
   render() {
-    return <div />;
+    return "";
   }
 }
 

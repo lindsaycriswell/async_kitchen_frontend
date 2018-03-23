@@ -9,10 +9,11 @@ const RecipeCard = props => {
     .join("-")}.jpg`;
 
   return (
-    <div className="three wide column">
-      <Card>
+    <div className="three wide column center aligned">
+      <Card style={{ marginBottom: "30px" }}>
         <Modal
-          style={{ marginLeft: "480px", marginTop: "90px" }}
+          size="large"
+          style={{ marginTop: "50px" }}
           trigger={
             <div>
               <Image src={"./photos/" + getPhoto} />
@@ -21,9 +22,9 @@ const RecipeCard = props => {
                   style={{
                     color: "blue",
                     textDecoration: "underline",
-                    height: "5vh",
-                    marginTop: "10px",
-                    textAlign: "center"
+                    height: "6vh",
+                    textAlign: "center",
+                    marginTop: "20px"
                   }}
                 >
                   {props.recipe.name}
@@ -33,7 +34,12 @@ const RecipeCard = props => {
           }
           closeIcon
         >
-          <Modal.Header style={{ color: "blue" }}>
+          <Modal.Header
+            style={{
+              color: "blue",
+              textAlign: "center"
+            }}
+          >
             {props.recipe.name}
           </Modal.Header>
           <Modal.Content image scrolling>

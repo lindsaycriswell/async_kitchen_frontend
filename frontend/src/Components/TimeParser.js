@@ -16,7 +16,7 @@ const TimeParser = props => {
     amPm = " P.M.";
   } else if (hour > 12) {
     hour -= 12;
-    amPm = " P.M";
+    amPm = " P.M.";
   }
 
   console.log(hour, minute, amPm);

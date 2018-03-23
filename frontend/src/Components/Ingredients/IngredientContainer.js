@@ -4,7 +4,16 @@ import IngredientList from "./IngredientList";
 const IngredientContainer = props => {
   return (
     <div>
-      <h3 style={{ margin: "15px" }}>Ingredients</h3>
+      <h3
+        style={{
+          marginLeft: "10px",
+          marginTop: "20px",
+          color: "blue",
+          textDecoration: "underline"
+        }}
+      >
+        Ingredients
+      </h3>
       <IngredientList ingredients={props.ingredients} />
     </div>
   );
