@@ -3,7 +3,7 @@ import Ingredient from "./Ingredient";
 
 const IngredientList = props => {
   return (
-    <ul style={{ textAlign: "left", marginBottom: "10px" }}>
+    <ul style={{ textAlign: "left", marginBottom: "20px" }}>
       {props.ingredients.map(ingredient => (
         <Ingredient ingredient={ingredient} key={ingredient.id} />
       ))}

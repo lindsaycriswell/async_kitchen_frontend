@@ -3,13 +3,14 @@ import IngredientContainer from "../Ingredients/IngredientContainer";
 import DirectionContainer from "../Directions/DirectionContainer";
 import { connect } from "react-redux";
 import { postRecipeMeal, destroyRecipeMeal } from "../../actions/recipemeals";
+import { Button } from "semantic-ui-react";
 
 class RecipeDetails extends React.Component {
   render() {
     return (
       <div>
         {this.props.currentMeal.recipes.includes(this.props.recipe) ? (
-          <button
+          <Button
             onClick={() =>
               this.props.destroyRecipeMeal(
                 this.props.recipe,
@@ -19,9 +20,9 @@ class RecipeDetails extends React.Component {
             style={{ marginBottom: "10px" }}
           >
             Remove from Meal
-          </button>
+          </Button>
         ) : (
-          <button
+          <Button
             onClick={() =>
               this.props.postRecipeMeal(
                 this.props.recipe,
@@ -31,10 +32,11 @@ class RecipeDetails extends React.Component {
             style={{ marginBottom: "10px" }}
           >
             Add to Meal
-          </button>
+          </Button>
         )}
+        <h4 style={{ margin: "10px" }}>{this.props.recipe.course}</h4>
         <h4 style={{ margin: "10px" }}>
-          Course: {this.props.recipe.course} | Serves:{" "}
+          Servings: {"   "}
           {this.props.recipe.servings}
         </h4>
         {this.props.recipe.prep_time > 0 ? (
