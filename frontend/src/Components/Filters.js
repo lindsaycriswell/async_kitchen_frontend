@@ -36,35 +36,38 @@ const Filters = props => {
   const uniqueIngredients = dedupe(allIngredients);
 
   return (
-    <div style={{ marginBottom: "20px" }}>
-      <Input
-        icon="search"
-        placeholder="Search Recipes..."
-        name="search"
-        onInput={props.handleChange}
-      />
-      <div style={{ margin: "15px" }} />
-      <Dropdown
-        style={{ width: "14vw", marginRight: "10px" }}
-        placeholder="Type of course"
-        name="course"
-        compact
-        search
-        selection
-        options={uniqueCourses}
-        onChange={props.handleChange}
-      />
-      <Dropdown
-        style={{ width: "14vw", marginLeft: "10px" }}
-        placeholder="Filter by ingredient"
-        name="ingredients"
-        compact
-        multiple
-        search
-        selection
-        options={uniqueIngredients}
-        onChange={props.handleChange}
-      />
+    <div>
+      <div className="column">
+        <Input
+          icon="search"
+          placeholder="Search Recipes..."
+          name="search"
+          onInput={props.handleChange}
+        />
+      </div>
+      <div className="column" style={{ margin: "10px" }}>
+        <Dropdown
+          style={{ width: "14vw", margin: "10px" }}
+          placeholder="Type of course"
+          name="course"
+          compact
+          search
+          selection
+          options={uniqueCourses}
+          onChange={props.handleChange}
+        />
+        <Dropdown
+          style={{ width: "14vw", margin: "10px" }}
+          placeholder="Filter by ingredient"
+          name="ingredients"
+          compact
+          multiple
+          search
+          selection
+          options={uniqueIngredients}
+          onChange={props.handleChange}
+        />
+      </div>
     </div>
   );
 };
