@@ -22,6 +22,7 @@ const RecipeList = props => {
       }
     }
   }
+  // console.log(getRecWithIngFilters);
 
   let getRecIds = {};
 
@@ -29,10 +30,13 @@ const RecipeList = props => {
     !getRecIds[getRecWithIngFilters[k].id]
       ? (getRecIds[getRecWithIngFilters[k].id] = 1)
       : (getRecIds[getRecWithIngFilters[k].id] += 1);
+    // console.log(getRecIds);
   }
   getRecIds = Object.keys(getRecIds).filter(function(key) {
     return getRecIds[key] === props.filters.ingredients.length;
   });
+
+  // console.log(getRecIds);
 
   // COMBINE ALL FILTERS
   let allRelevantRecipes = [];

@@ -5,12 +5,21 @@ const ShoppingListIngredientList = props => {
 
   for (var i = 0; i < props.recipes.length; i++) {
     for (var j = 0; j < props.recipes[i].ingredients.length; j++) {
-      console.log(props.recipes[i].ingredients[j].search_name);
-      console.log(props.recipes[i].ingredients[j].description);
-      console.log(props.recipes[i].name);
+      !ingArr[props.recipes[i].ingredients[j].search_name]
+        ? (ingArr[props.recipes[i].ingredients[j].search_name] = [
+            {
+              recipe: props.recipes[i].name,
+              description: props.recipes[i].ingredients[j].description
+            }
+          ])
+        : ingArr[props.recipes[i].ingredients[j].search_name].push({
+            recipe: props.recipes[i].name,
+            description: props.recipes[i].ingredients[j].description
+          });
     }
   }
-  // console.log(ingArr);
+  console.log(ingArr);
+
   return (
     <div className="ui grid">
       <ul>
