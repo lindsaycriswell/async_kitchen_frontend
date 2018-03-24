@@ -16,7 +16,7 @@ const MealDirectionList = props => {
   });
 
   return (
-    <div>
+    <div className="ui grid">
       {sortedDirections.map(direction => (
         <MealDirection direction={direction} key={direction.description} />
       ))}

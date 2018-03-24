@@ -67,7 +67,10 @@ class MealModalContainer extends React.Component {
               Get Cooking!
             </Modal.Header>
             <div>
-              <Modal.Content className="ui grid centered">
+              <Modal.Content
+                className="ui grid centered"
+                style={{ marginTop: "10px" }}
+              >
                 {this.props.recipes.map(recipe => (
                   <RecipeCard recipe={recipe} key={recipe.id} />
                 ))}
@@ -105,7 +108,7 @@ class MealModalContainer extends React.Component {
                 </div>
                 <div>
                   <MealDirectionList />
-                  <div className="row">
+                  <div className="sixteen wide column">
                     <h2
                       style={{
                         textAlign: "center",

@@ -43,7 +43,7 @@ class RecipeContainer extends React.Component {
         {!this.props.recipesLoading ? (
           <div>
             <Image src={image} fluid />
-            <div style={{ backgroundColor: "teal" }} fluid>
+            <div style={{ backgroundColor: "teal" }}>
               {this.props.activeMeal ? (
                 <div className="ui grid centered">
                   <MealContainer recipes={this.props.currentMeal.recipes} />

@@ -12,6 +12,7 @@ const RecipeCard = props => {
     <div className="three wide column center aligned">
       <Card style={{ marginBottom: "30px" }}>
         <Modal
+          className="ui large scrolling modal transition visible active"
           size="large"
           style={{ marginTop: "50px" }}
           trigger={
