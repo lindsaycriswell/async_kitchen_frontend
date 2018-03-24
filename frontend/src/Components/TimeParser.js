@@ -19,7 +19,6 @@ const TimeParser = props => {
     amPm = " P.M.";
   }
 
-  console.log(hour, minute, amPm);
   return (
     <div style={{ display: "inline" }}>
       {hour}:{minute}

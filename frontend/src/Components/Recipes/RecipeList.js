@@ -69,7 +69,7 @@ const RecipeList = props => {
           No matching recipes. Try using fewer search terms.
         </h3>
       ) : null}
-      <div className="ui grid centered">
+      <div className="ui grid centered" style={{ marginBottom: "200px" }}>
         {sortedRecipes.map(recipe => (
           <RecipeCard recipe={recipe} key={recipe.id} />
         ))}

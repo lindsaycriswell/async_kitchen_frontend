@@ -10,6 +10,11 @@ const Filters = props => {
           key: array[i],
           value: array[i],
           text: array[i]
+            .split(" ")
+            .map(function(word) {
+              return word[0].toUpperCase() + word.substr(1);
+            })
+            .join(" ")
         });
       }
     }

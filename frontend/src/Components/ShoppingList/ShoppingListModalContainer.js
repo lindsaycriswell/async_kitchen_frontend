@@ -8,8 +8,9 @@ const ShoppingListModalContainer = props => {
   return (
     <div>
       <Modal
+        className="ui large scrolling modal transition visible active"
         size="large"
-        style={{ marginLeft: "400px", marginTop: "10px" }}
+        style={{ marginTop: "50px" }}
         trigger={
           <Button
             size="medium"
@@ -22,20 +23,52 @@ const ShoppingListModalContainer = props => {
         }
         closeIcon
       >
-        <Modal.Header style={{ color: "blue" }}>
+        <Modal.Header style={{ color: "blue", textAlign: "center" }}>
           Create a Shopping List
         </Modal.Header>
         <div>
-          <Modal.Content className="ui five column grid">
+          <Modal.Content
+            className="ui grid centered"
+            style={{ marginTop: "10px" }}
+          >
+            {props.currentMeal.recipes.map(recipe => (
+              <RecipeCard recipe={recipe} key={recipe.id} />
+            ))}
             <div className="row">
-              {props.currentMeal.recipes.map(recipe => (
-                <RecipeCard recipe={recipe} key={recipe.id} />
-              ))}
+              <div className="sixteen wide column">
+                <h1
+                  style={{
+                    textAlign: "center",
+                    color: "blue",
+                    textDecoration: "underline"
+                  }}
+                >
+                  Ingredients
+                </h1>
+              </div>
+              <div className="sixteen wide column">
+                <h3
+                  style={{
+                    textAlign: "center"
+                  }}
+                >
+                  Check off the ingredients you already have
+                </h3>
+              </div>
             </div>
-            <div className="row">
+            <div>
               <ShoppingListIngredientList recipes={props.currentMeal.recipes} />
-
-              <p>Email field goes here</p>
+              <div className="sixteen wide column">
+                <h2
+                  style={{
+                    color: "red",
+                    textAlign: "center",
+                    marginBottom: "20px"
+                  }}
+                >
+                  Email field goes here
+                </h2>
+              </div>
             </div>
           </Modal.Content>
         </div>
