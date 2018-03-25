@@ -18,6 +18,7 @@ const Filters = props => {
         });
       }
     }
+    // console.log(newArray);
     return newArray.sort(function(a, b) {
       let textA = a.text.toUpperCase();
       let textB = b.text.toUpperCase();
