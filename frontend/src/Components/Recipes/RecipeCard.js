@@ -9,50 +9,49 @@ const RecipeCard = props => {
     .join("-")}.jpg`;
 
   return (
-    <div className="three wide column center aligned">
-      <Card style={{ marginBottom: "30px" }}>
-        <Modal
-          className="ui large scrolling modal transition visible active"
-          size="large"
-          style={{ marginTop: "50px" }}
-          trigger={
-            <div>
-              <Image src={"./photos/" + getPhoto} />
-              <div className="middle aligned content">
-                <div className="header">
-                  <h3
-                    style={{
-                      color: "blue",
-                      textDecoration: "underline",
-                      height: "6vh",
-                      textAlign: "center"
-                    }}
-                  >
-                    {props.recipe.name}
-                  </h3>
-                </div>
-              </div>
-            </div>
-          }
-          closeIcon
+    <Modal
+      className="ui large scrolling modal transition visible active"
+      size="large"
+      style={{ marginTop: "50px" }}
+      trigger={
+        <Card
+          style={{
+            marginBottom: "3%",
+            marginLeft: "10px",
+            marginRight: "10px"
+          }}
         >
-          <Modal.Header
+          <Image src={"./photos/" + getPhoto} />
+          <h3
             style={{
               color: "blue",
-              textAlign: "center"
+              textDecoration: "underline",
+              textAlign: "center",
+              marginBottom: "5%",
+              verticalAlign: "middle"
             }}
           >
             {props.recipe.name}
-          </Modal.Header>
-          <Modal.Content image scrolling>
-            <Image wrapped size="large" src={"./photos/" + getPhoto} />
-            <Modal.Description>
-              <RecipeDetails recipe={props.recipe} key={props.recipe.id} />
-            </Modal.Description>
-          </Modal.Content>
-        </Modal>
-      </Card>
-    </div>
+          </h3>
+        </Card>
+      }
+      closeIcon
+    >
+      <Modal.Header
+        style={{
+          color: "blue",
+          textAlign: "center"
+        }}
+      >
+        {props.recipe.name}
+      </Modal.Header>
+      <Modal.Content image scrolling>
+        <Image wrapped size="large" src={"./photos/" + getPhoto} />
+        <Modal.Description>
+          <RecipeDetails recipe={props.recipe} key={props.recipe.id} />
+        </Modal.Description>
+      </Modal.Content>
+    </Modal>
   );
 };
 
