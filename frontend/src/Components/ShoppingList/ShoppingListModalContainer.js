@@ -63,7 +63,8 @@ const ShoppingListModalContainer = props => {
                   style={{
                     color: "red",
                     textAlign: "center",
-                    marginBottom: "20px"
+                    marginBottom: "20px",
+                    marginTop: "15px"
                   }}
                 >
                   Email field goes here

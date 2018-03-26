@@ -34,58 +34,28 @@ const ShoppingListIngredientList = props => {
       }
     }
   }
-  console.log(ingArr);
 
-  // let combinedIngArr = [];
-  //
-  // allIngArr.forEach(ing => {
-  //   console.log(ing);
-  //   combinedIngArr.forEach((k, v) => {
-  //     console.log(k);
-  //     console.log(v);
-  //   });
-  // });
-  //
-  //   var output = [];
-  //
-  // array.forEach(function(value) {
-  //   var existing = output.filter(function(v, i) {
-  //     return v.name == value.name;
-  //   });
-  //   if (existing.length) {
-  //     var existingIndex = output.indexOf(existing[0]);
-  //     output[existingIndex].value = output[existingIndex].value.concat(value.value);
-  //   } else {
-  //     if (typeof value.value == 'string')
-  //       value.value = [value.value];
-  //     output.push(value);
-  //   }
-  // });
-  //
-  // console.dir(output);
-
-  // console.log(ingArr);
-
-  // ingArr.find(ing => ing[props.recipes[i].ingredients[j].search_name]);
-  // else {
-  //   let newObj = {};
-  //   newObj["recipe"] = props.recipes[i].name;
-  //   newObj["description"] = props.recipes[i].ingredients[j].description;
-  //   let newArr = Object.values(
-  //     ingArr.find(ing => ing[props.recipes[i].ingredients[j].search_name])
-  //   );
-  //   newArr.push({
-  //     recipe: props.recipes[i].name,
-  //     description: props.recipes[i].ingredients[j].description
-  //   });
-  //   console.log(newArr);
-  // }
+  ingArr.sort(function(a, b) {
+    let searchNameA = a.searchName.toUpperCase();
+    let searchNameB = b.searchName.toUpperCase();
+    if (searchNameA < searchNameB) {
+      return -1;
+    }
+    if (searchNameA > searchNameB) {
+      return 1;
+    }
+    return 0;
+  });
 
   return (
-    <div className="ui grid" />
-    // {ingArr.map(ingredient => (
-    //   <ShoppingListIngredient ingredient={ingredient} key={ingredient} />
-    // ))}
+    <div className="ui grid">
+      {ingArr.map(ingredient => (
+        <ShoppingListIngredient
+          ingredient={ingredient}
+          key={ingredient.searchName}
+        />
+      ))}
+    </div>
   );
 };
 
