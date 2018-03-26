@@ -1,5 +1,6 @@
 import React from "react";
 import RecipeCard from "./RecipeCard";
+import { Card } from "semantic-ui-react";
 
 const RecipeList = props => {
   // FILTERS FROM STATE
@@ -69,10 +70,12 @@ const RecipeList = props => {
           No matching recipes. Try using fewer search terms.
         </h3>
       ) : null}
-      <div className="ui grid centered" style={{ marginBottom: "200px" }}>
-        {sortedRecipes.map(recipe => (
-          <RecipeCard recipe={recipe} key={recipe.id} />
-        ))}
+      <div className="sixteen wide column">
+        <Card.Group itemsPerRow={5} centered style={{ margin: "10px" }}>
+          {sortedRecipes.map(recipe => (
+            <RecipeCard recipe={recipe} key={recipe.id} />
+          ))}
+        </Card.Group>
       </div>
     </div>
   );
