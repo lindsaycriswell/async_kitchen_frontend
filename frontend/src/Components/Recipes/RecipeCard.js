@@ -18,19 +18,20 @@ const RecipeCard = props => {
           trigger={
             <div>
               <Image src={"./photos/" + getPhoto} />
-              <Card.Content>
-                <h3
-                  style={{
-                    color: "blue",
-                    textDecoration: "underline",
-                    height: "6vh",
-                    textAlign: "center",
-                    marginTop: "20px"
-                  }}
-                >
-                  {props.recipe.name}
-                </h3>
-              </Card.Content>
+              <div className="middle aligned content">
+                <div className="header">
+                  <h3
+                    style={{
+                      color: "blue",
+                      textDecoration: "underline",
+                      height: "6vh",
+                      textAlign: "center"
+                    }}
+                  >
+                    {props.recipe.name}
+                  </h3>
+                </div>
+              </div>
             </div>
           }
           closeIcon
