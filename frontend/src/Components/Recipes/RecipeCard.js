@@ -27,7 +27,7 @@ const RecipeCard = props => {
               color: "blue",
               textDecoration: "underline",
               textAlign: "center",
-              marginBottom: "5%",
+              marginBottom: "7%",
               verticalAlign: "middle"
             }}
           >

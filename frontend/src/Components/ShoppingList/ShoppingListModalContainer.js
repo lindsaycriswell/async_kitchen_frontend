@@ -17,13 +17,36 @@ class ShoppingListModalContainer extends React.Component {
   };
 
   handleSubmit = () => {
+    this.props.shoppingListIngredients.sort(function(a, b) {
+      let searchNameA = a.searchName.toUpperCase();
+      let searchNameB = b.searchName.toUpperCase();
+      if (searchNameA < searchNameB) {
+        return -1;
+      }
+      if (searchNameA > searchNameB) {
+        return 1;
+      }
+      return 0;
+    });
+
+    for (var i = 0; i < this.props.shoppingListIngredients.length; i++) {
+      this.props.shoppingListIngredients[
+        i
+      ].searchName = this.props.shoppingListIngredients[i].searchName
+        .split(" ")
+        .map(function(word) {
+          return word[0].toUpperCase() + word.substr(1);
+        })
+        .join(" ");
+    }
+
     emailjs
       .send(
         "kitchensyncshoppinglist_gmail_com",
         "kitchensync_shopping_list",
         {
           email: this.state.email,
-          shoppingListIngredients: this.state.shoppingListIngredients
+          shoppingListIngredients: this.props.shoppingListIngredients
         },
         "user_kN7rJ3E81xLlmJFFtafZ0"
       )
@@ -42,33 +65,6 @@ class ShoppingListModalContainer extends React.Component {
   };
 
   render() {
-    const sortedIngredients = this.props.shoppingListIngredients.sort(function(
-      a,
-      b
-    ) {
-      var searchNameA = a.searchName.toUpperCase();
-      var searchNameB = b.searchName.toUpperCase();
-      if (searchNameA < searchNameB) {
-        return -1;
-      }
-      if (searchNameA > searchNameB) {
-        return 1;
-      }
-      return 0;
-    });
-
-    sortedIngredients.map(
-      ing =>
-        (ing.searchName = ing.searchName
-          .split(" ")
-          .map(function(word) {
-            return word[0].toUpperCase() + word.substr(1);
-          })
-          .join(" "))
-    );
-
-    // console.log(this.props.currentMeal);
-    console.log("shoppinglist", this.props.shoppingListIngredients);
     return (
       <div>
         <Modal
