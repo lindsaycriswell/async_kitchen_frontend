@@ -37,7 +37,7 @@ const defaultState = {
   // Directions
   directionArray: [],
 
-  // Shopping List
+  // Shopping List and recipe meals
   shoppingListIngredients: []
 };
 
