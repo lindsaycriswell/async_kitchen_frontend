@@ -1,21 +1,38 @@
 import React from "react";
 import ShoppingListDetails from "./ShoppingListDetails";
+import { connect } from "react-redux";
+import {
+  setShoppingListIngredients,
+  removeShoppingListIngredient,
+  addShoppingListIngredient
+} from "../../actions/shoppinglists";
 
 class ShoppingListIngredient extends React.Component {
   state = {
-    completed: false
+    remove: false
   };
 
   handleChange = e => {
-    this.setState({
-      completed: !this.state.completed
-    });
+    this.setState(
+      {
+        remove: !this.state.remove
+      },
+      () => {
+        this.state.remove
+          ? this.props.removeShoppingListIngredient(this.props.ingredient)
+          : this.props.addShoppingListIngredient(this.props.ingredient);
+      }
+    );
   };
+
+  componentDidMount() {
+    this.props.setShoppingListIngredients(this.props.ingredient);
+  }
 
   render() {
     let displayStyle;
 
-    this.state.completed
+    this.state.remove
       ? (displayStyle = {
           display: "inline",
           textDecoration: "line-through",
@@ -26,7 +43,7 @@ class ShoppingListIngredient extends React.Component {
 
           textAlign: "left"
         });
-    console.log(this.props.ingredient.details);
+
     return (
       <div className="row" style={{ marginRight: "60px" }}>
         <div className="three wide column">
@@ -54,4 +71,8 @@ class ShoppingListIngredient extends React.Component {
   }
 }
 
-export default ShoppingListIngredient;
+export default connect(null, {
+  setShoppingListIngredients,
+  removeShoppingListIngredient,
+  addShoppingListIngredient
+})(ShoppingListIngredient);

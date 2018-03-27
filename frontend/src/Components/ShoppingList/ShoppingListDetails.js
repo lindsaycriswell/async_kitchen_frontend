@@ -1,7 +1,6 @@
 import React from "react";
 
 const ShoppingListDetails = props => {
-  console.log(props.details);
   return (
     <p
       style={{

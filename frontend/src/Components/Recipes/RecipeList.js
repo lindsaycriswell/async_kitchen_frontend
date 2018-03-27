@@ -71,7 +71,7 @@ const RecipeList = props => {
         </h3>
       ) : null}
       <div className="sixteen wide column">
-        <Card.Group itemsPerRow={5} centered style={{ margin: "10px" }}>
+        <Card.Group itemsPerRow={5} centered style={{ margin: "20px" }}>
           {sortedRecipes.map(recipe => (
             <RecipeCard recipe={recipe} key={recipe.id} />
           ))}

@@ -7,6 +7,7 @@ import { Button } from "semantic-ui-react";
 
 class RecipeDetails extends React.Component {
   render() {
+    // console.log(this.props.currentMeal);
     return (
       <div>
         {this.props.currentMeal.recipes.includes(this.props.recipe) ? (
