@@ -2,6 +2,7 @@ import React from "react";
 import MealRecipeList from "./MealRecipeList";
 import MealModalContainer from "./MealModalContainer";
 import { Card } from "semantic-ui-react";
+
 const MealContainer = props => {
   return (
     <div className="row">

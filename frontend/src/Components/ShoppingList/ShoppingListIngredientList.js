@@ -15,6 +15,7 @@ const ShoppingListIngredientList = props => {
         obj["searchName"] = props.recipes[i].ingredients[j].search_name;
         obj["details"] = [
           {
+            id: props.recipes[i].id,
             recipe: props.recipes[i].name,
             description: props.recipes[i].ingredients[j].description
           }
@@ -22,6 +23,7 @@ const ShoppingListIngredientList = props => {
         ingArr.push(obj);
       } else {
         let detObj = {};
+        detObj["id"] = props.recipes[i].id;
         detObj["recipe"] = props.recipes[i].name;
         detObj["description"] = props.recipes[i].ingredients[j].description;
 
@@ -46,6 +48,8 @@ const ShoppingListIngredientList = props => {
     }
     return 0;
   });
+
+  // console.log(ingArr);
 
   return (
     <div className="ui grid">
