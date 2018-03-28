@@ -9,7 +9,9 @@ const MealContainer = props => {
       {props.recipes.length > 0 ? (
         <div className="sixteen wide column">
           <div className="ui grid centered">
-            <h1 style={{ color: "white", paddingTop: "20px" }}>Current Meal</h1>
+            <h1 className="main-page-header" style={{ marginTop: "4%" }}>
+              Get cooking!
+            </h1>
             <MealModalContainer recipes={props.recipes} />
             <div className="sixteen wide column">
               <Card.Group itemsPerRow={5} centered>

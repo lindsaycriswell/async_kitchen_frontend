@@ -12,7 +12,6 @@ const RecipeCard = props => {
     <Modal
       className="ui large scrolling modal transition visible active"
       size="large"
-      style={{ marginTop: "50px" }}
       trigger={
         <Card
           style={{
@@ -23,10 +22,8 @@ const RecipeCard = props => {
         >
           <Image src={"./photos/" + getPhoto} />
           <h3
+            className="modal-header"
             style={{
-              color: "blue",
-              textDecoration: "underline",
-              textAlign: "center",
               marginBottom: "7%",
               verticalAlign: "middle"
             }}
@@ -38,9 +35,9 @@ const RecipeCard = props => {
       closeIcon
     >
       <Modal.Header
+        className="modal-header"
         style={{
-          color: "blue",
-          textAlign: "center"
+          color: "#4e618e"
         }}
       >
         {props.recipe.name}

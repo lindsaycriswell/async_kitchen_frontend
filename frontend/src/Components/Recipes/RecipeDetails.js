@@ -7,7 +7,6 @@ import { Button } from "semantic-ui-react";
 
 class RecipeDetails extends React.Component {
   render() {
-    // console.log(this.props.currentMeal);
     return (
       <div>
         {this.props.currentMeal.recipes.includes(this.props.recipe) ? (
@@ -35,18 +34,18 @@ class RecipeDetails extends React.Component {
             Add to Meal
           </Button>
         )}
-        <h4 style={{ margin: "10px" }}>{this.props.recipe.course}</h4>
-        <h4 style={{ margin: "10px" }}>
+        <h4 className="recipe-card-info">{this.props.recipe.course}</h4>
+        <h4 className="recipe-card-info">
           Servings: {"   "}
           {this.props.recipe.servings}
         </h4>
         {this.props.recipe.prep_time > 0 ? (
-          <h4 style={{ margin: "10px" }}>
+          <h4 className="recipe-card-info">
             Prep Time: {this.props.recipe.prep_time} minutes
           </h4>
         ) : null}
         {this.props.recipe.cook_time > 0 ? (
-          <h4 style={{ margin: "10px" }}>
+          <h4 className="recipe-card-info">
             Cook Time: {this.props.recipe.cook_time} minutes
           </h4>
         ) : null}

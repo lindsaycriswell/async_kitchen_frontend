@@ -49,8 +49,11 @@ class RecipeContainer extends React.Component {
                 <div className="ui grid centered">
                   <MealContainer recipes={this.props.currentMeal.recipes} />
                   <div className="row">
-                    <h1 style={{ color: "white", marginTop: "30px" }}>
-                      Pick some recipes to add to your meal!
+                    <h1
+                      className="main-page-header"
+                      style={{ marginTop: "30px" }}
+                    >
+                      Pick some recipes to add to your meal
                     </h1>
                   </div>
                   <div className="row">
@@ -65,6 +68,11 @@ class RecipeContainer extends React.Component {
                     ingredients={this.props.ingredients}
                     filters={this.state}
                   />
+                  <div className="row">
+                    <div className="sixteen wide column">
+                      <p id="footer">¡ LC ! Productions 2018</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             ) : (

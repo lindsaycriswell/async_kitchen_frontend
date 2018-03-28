@@ -1,4 +1,80 @@
 .App {
   text-align: center;
   background-color: teal;
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.main-page-header {
+  color: white;
+}
+
+#footer {
+  color: white;
+  text-align: left;
+  margin-left: 2%;
+}
+
+.modal-header {
+  color: #4e618e;
+  text-align: center;
+}
+
+.modal-header-left {
+  color: #4e618e;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.green-text {
+  color: #2d882d;
+}
+
+.recipe-card-info {
+  margin: 10px;
+  color: #4e618e;
+}
+
+.div-margin {
+  margin-top: 30px;
+}
+
+.ul-div {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+#time-parser {
+  display: inline;
+}
+
+.completed-green {
+  display: inline;
+  text-decoration: line-through;
+  color: #2d882d;
+  text-align: left;
+}
+
+.completed-black {
+  display: inline;
+  text-decoration: line-through;
+  text-align: left;
+}
+
+.incomplete-green {
+  display: inline;
+  color: #2d882d;
+  text-align: left;
+}
+
+.incomplete-black {
+  display: inline;
+  text-align: left;
+}
+
+.italic-text {
+  font-style: italic;
 }

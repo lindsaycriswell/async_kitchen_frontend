@@ -66,9 +66,12 @@ const RecipeList = props => {
   return (
     <div className="row">
       {sortedRecipes.length === 0 ? (
-        <h3 style={{ color: "white" }}>
+        <h2
+          className="main-page-header"
+          style={{ marginTop: "5%", marginBottom: "24%" }}
+        >
           No matching recipes. Try using fewer search terms.
-        </h3>
+        </h2>
       ) : null}
       <div className="sixteen wide column">
         <Card.Group itemsPerRow={5} centered style={{ margin: "20px" }}>

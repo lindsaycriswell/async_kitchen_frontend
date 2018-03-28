@@ -3,7 +3,7 @@ import Direction from "./Direction";
 
 const DirectionList = props => {
   return (
-    <ul style={{ textAlign: "left" }}>
+    <ul className="ul-div">
       {props.directions.map(direction => (
         <Direction direction={direction} key={direction.id} />
       ))}

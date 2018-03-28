@@ -33,24 +33,23 @@ class MealModalContainer extends React.Component {
     return (
       <div className="row">
         <div className="four wide column center aligned">
-          <h3 style={{ color: "white" }}>What time would you like to eat?</h3>
+          <h3 className="main-page-header">What time would you like to eat?</h3>
           <input
             type="time"
             value={`${this.state.mealTime.hour}:${this.state.mealTime.minute}`}
             onChange={this.handleChange}
-            label="What time would you like to eat?"
+            style={{ marginBottom: "3%" }}
           />
           <div />
 
           <Modal
             size="large"
-            style={{ marginTop: "50px" }}
             trigger={
               <Button
                 size="medium"
                 style={{
-                  marginTop: "20px",
-                  marginBottom: "20px"
+                  marginTop: "1%",
+                  marginBottom: "5%"
                 }}
               >
                 Cook This Meal!
@@ -60,9 +59,9 @@ class MealModalContainer extends React.Component {
           >
             <Modal.Header
               style={{
-                color: "blue",
-                textAlign: "center"
+                color: "#4e618e"
               }}
+              className="modal-header"
             >
               Get Cooking!
             </Modal.Header>
@@ -83,26 +82,13 @@ class MealModalContainer extends React.Component {
                 ))}
                 <div className="row">
                   <div className="sixteen wide column">
-                    <h1
-                      style={{
-                        textAlign: "center",
-                        color: "blue",
-                        textDecoration: "underline"
-                      }}
-                    >
-                      Directions
-                    </h1>
+                    <h1 className="modal-header">Directions</h1>
                   </div>
                   <div className="sixteen wide column">
-                    <h3
-                      style={{
-                        textAlign: "center"
-                      }}
-                    >
-                      Directions in{" "}
-                      <span style={{ color: "green" }}>GREEN</span> can be done
-                      ahead. <br />Start chopping! Mise en place is your best
-                      friend.
+                    <h3 className="centered-text">
+                      Directions in <span className="green-text">GREEN</span>{" "}
+                      can be done ahead. <br />Start chopping! Mise en place is
+                      your best friend.
                     </h3>
                   </div>
                 </div>
@@ -110,10 +96,9 @@ class MealModalContainer extends React.Component {
                   <MealDirectionList />
                   <div className="sixteen wide column">
                     <h2
+                      className="modal-header"
                       style={{
-                        textAlign: "center",
-                        marginBottom: "20px",
-                        color: "blue"
+                        marginBottom: "20px"
                       }}
                     >
                       Eat at <TimeParser time={endTime} />
