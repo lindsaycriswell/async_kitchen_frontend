@@ -53,7 +53,7 @@ const Filters = props => {
       <div className="column" style={{ margin: "10px" }}>
         <Dropdown
           style={{ width: "14vw", margin: "10px" }}
-          placeholder="Type of course"
+          placeholder="Filter by course"
           name="course"
           compact
           search
@@ -63,7 +63,7 @@ const Filters = props => {
         />
         <Dropdown
           style={{ width: "14vw", margin: "10px" }}
-          placeholder="Filter by ingredient"
+          placeholder="Filter by ingredients"
           name="ingredients"
           compact
           multiple

@@ -68,9 +68,7 @@ class ShoppingListModalContainer extends React.Component {
     return (
       <div>
         <Modal
-          className="ui large scrolling modal transition visible active"
-          size="large"
-          style={{ marginTop: "50px" }}
+          className="ui small scrolling modal transition visible active"
           trigger={
             <Button
               size="medium"
@@ -83,7 +81,12 @@ class ShoppingListModalContainer extends React.Component {
           }
           closeIcon
         >
-          <Modal.Header style={{ color: "blue", textAlign: "center" }}>
+          <Modal.Header
+            style={{
+              color: "#4e618e"
+            }}
+            className="modal-header"
+          >
             Create a Shopping List
           </Modal.Header>
           <div>
@@ -96,23 +99,12 @@ class ShoppingListModalContainer extends React.Component {
               ))}
               <div className="row">
                 <div className="sixteen wide column">
-                  <h1
-                    style={{
-                      textAlign: "center",
-                      color: "blue",
-                      textDecoration: "underline"
-                    }}
-                  >
-                    Ingredients
-                  </h1>
+                  <h1 className="modal-header">Ingredients</h1>
                 </div>
                 <div className="sixteen wide column">
-                  <h3
-                    style={{
-                      textAlign: "center"
-                    }}
-                  >
-                    Check off the ingredients you already have
+                  <h3 className="centered-text" style={{ margin: "1%" }}>
+                    Check off the ingredients you already have to remove them
+                    from your shopping list.
                   </h3>
                 </div>
               </div>

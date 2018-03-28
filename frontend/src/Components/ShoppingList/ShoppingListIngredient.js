@@ -33,20 +33,12 @@ class ShoppingListIngredient extends React.Component {
     let displayStyle;
 
     this.state.remove
-      ? (displayStyle = {
-          display: "inline",
-          textDecoration: "line-through",
-          textAlign: "left"
-        })
-      : (displayStyle = {
-          display: "inline",
-
-          textAlign: "left"
-        });
+      ? (displayStyle = "completed-black")
+      : (displayStyle = "incomplete-black");
 
     return (
-      <div className="row" style={{ marginRight: "60px" }}>
-        <div className="three wide column">
+      <div className="row">
+        <div className="four wide column">
           <input
             onChange={this.handleChange}
             type="checkbox"
@@ -54,7 +46,7 @@ class ShoppingListIngredient extends React.Component {
           />
         </div>
         <div className="nine wide column left aligned">
-          <h3 style={displayStyle}>
+          <h3 classNa={displayStyle}>
             {this.props.ingredient.searchName
               .split(" ")
               .map(function(word) {

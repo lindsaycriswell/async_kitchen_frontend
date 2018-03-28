@@ -16,7 +16,7 @@ const MealRecipeDetail = props => {
     <div className="row">
       <h3>
         {props.recipe.name} takes {props.recipe.total_time} minutes to prepare -
-        start at <TimeParser time={startTime} />
+        Start at <TimeParser time={startTime} />
       </h3>
 
       <AddTimesToMealDirections recipe={props.recipe} startTime={startTime} />

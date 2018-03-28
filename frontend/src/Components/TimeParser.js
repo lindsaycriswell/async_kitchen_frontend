@@ -20,7 +20,7 @@ const TimeParser = props => {
   }
 
   return (
-    <div style={{ display: "inline" }}>
+    <div id="time-parser">
       {hour}:{minute}
       {amPm}
     </div>

@@ -16,29 +16,13 @@ class MealDirection extends React.Component {
     let displayStyle;
 
     if (this.state.completed && this.props.direction.doAhead) {
-      displayStyle = {
-        display: "inline",
-        textDecoration: "line-through",
-        color: "green",
-        textAlign: "left"
-      };
+      displayStyle = "completed-green";
     } else if (this.state.completed) {
-      displayStyle = {
-        display: "inline",
-        textDecoration: "line-through",
-        textAlign: "left"
-      };
+      displayStyle = "completed-black";
     } else if (this.props.direction.doAhead) {
-      displayStyle = {
-        display: "inline",
-        color: "green",
-        textAlign: "left"
-      };
+      displayStyle = "incomplete-green";
     } else {
-      displayStyle = {
-        display: "inline",
-        textAlign: "left"
-      };
+      displayStyle = "incomplete-black";
     }
 
     return (
@@ -47,21 +31,15 @@ class MealDirection extends React.Component {
           <input
             onChange={this.handleChange}
             type="checkbox"
-            style={{ marginLeft: "25px", marginTop: "5px" }}
+            style={{ marginLeft: "40px", marginTop: "5px" }}
           />
         </div>
         <div className="fifteen wide column left aligned">
-          <h3 style={displayStyle}>
+          <h3 className={displayStyle}>
             <TimeParser time={new Date(this.props.direction.time)} /> -{" "}
             {this.props.direction.description}
           </h3>
-          <p
-            style={{
-              fontStyle: "italic"
-            }}
-          >
-            {this.props.direction.recipe}
-          </p>
+          <p className="italic-text">{this.props.direction.recipe}</p>
         </div>
       </div>
     );
