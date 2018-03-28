@@ -19,7 +19,7 @@ const MealContainer = props => {
           </div>
         </div>
       ) : (
-        <div style={{ backgroundColor: "teal" }} />
+        <div />
       )}
     </div>
   );
