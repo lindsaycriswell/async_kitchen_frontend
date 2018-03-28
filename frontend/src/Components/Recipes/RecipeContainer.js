@@ -2,6 +2,7 @@ import React from "react";
 import Filters from "../Filters";
 import RecipeList from "./RecipeList";
 import image from "./../../photos/recipe-page.jpg";
+// import bannerImage from "./../../photos/newbanner.jpg";
 import MealContainer from "./../Meals/MealContainer";
 import { connect } from "react-redux";
 import { fetchRecipes } from "../../actions/recipes";
@@ -42,9 +43,9 @@ class RecipeContainer extends React.Component {
       <div>
         {!this.props.recipesLoading ? (
           <div>
-            <Image src={image} fluid />
-            <div style={{ backgroundColor: "teal" }}>
-              {this.props.activeMeal ? (
+            {this.props.activeMeal ? (
+              <div>
+                <Image src={image} fluid />
                 <div className="ui grid centered">
                   <MealContainer recipes={this.props.currentMeal.recipes} />
                   <div className="row">
@@ -65,22 +66,23 @@ class RecipeContainer extends React.Component {
                     filters={this.state}
                   />
                 </div>
-              ) : (
-                <div className="ui one column grid">
-                  <Button
-                    size="massive"
-                    style={{
-                      marginTop: "50px",
-                      marginBottom: "500px",
-                      textAlign: "center"
-                    }}
-                    onClick={this.props.postMeal}
-                  >
-                    Start a New Meal!
-                  </Button>
-                </div>
-              )}
-            </div>
+              </div>
+            ) : (
+              <div className="ui one column grid">
+                <h1 id="test">TEST</h1>
+                <Button
+                  size="massive"
+                  style={{
+                    marginTop: "50px",
+                    marginBottom: "500px",
+                    textAlign: "center"
+                  }}
+                  onClick={this.props.postMeal}
+                >
+                  Start a New Meal!
+                </Button>
+              </div>
+            )}
           </div>
         ) : (
           <div>

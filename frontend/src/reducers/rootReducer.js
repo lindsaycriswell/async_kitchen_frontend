@@ -20,7 +20,7 @@ import {
 // SWITCH ACTIVEMEAL TO FALSE
 const defaultState = {
   // Toggles on homepage load
-  activeMeal: true,
+  activeMeal: false,
 
   // Recipe fetches
   recipes: [],
