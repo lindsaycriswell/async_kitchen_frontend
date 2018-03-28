@@ -2,7 +2,7 @@ import React from "react";
 import Filters from "../Filters";
 import RecipeList from "./RecipeList";
 import image from "./../../photos/recipe-page.jpg";
-// import bannerImage from "./../../photos/newbanner.jpg";
+import bannerImage from "./../../photos/newbanner.jpg";
 import MealContainer from "./../Meals/MealContainer";
 import { connect } from "react-redux";
 import { fetchRecipes } from "../../actions/recipes";
@@ -68,19 +68,8 @@ class RecipeContainer extends React.Component {
                 </div>
               </div>
             ) : (
-              <div className="ui one column grid">
-                <h1 id="test">TEST</h1>
-                <Button
-                  size="massive"
-                  style={{
-                    marginTop: "50px",
-                    marginBottom: "500px",
-                    textAlign: "center"
-                  }}
-                  onClick={this.props.postMeal}
-                >
-                  Start a New Meal!
-                </Button>
+              <div>
+                <Image src={bannerImage} fluid onClick={this.props.postMeal} />
               </div>
             )}
           </div>
