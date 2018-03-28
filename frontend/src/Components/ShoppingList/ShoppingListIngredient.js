@@ -33,7 +33,7 @@ class ShoppingListIngredient extends React.Component {
     let displayStyle;
 
     this.state.remove
-      ? (displayStyle = "completed-black")
+      ? (displayStyle = "completed-grey")
       : (displayStyle = "incomplete-black");
 
     return (
@@ -46,7 +46,7 @@ class ShoppingListIngredient extends React.Component {
           />
         </div>
         <div className="nine wide column left aligned">
-          <h3 classNa={displayStyle}>
+          <h3 className={displayStyle}>
             {this.props.ingredient.searchName
               .split(" ")
               .map(function(word) {

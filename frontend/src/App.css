@@ -64,6 +64,13 @@
   text-align: left;
 }
 
+.completed-grey {
+  display: inline;
+  text-decoration: line-through;
+  color: grey;
+  text-align: left;
+}
+
 .incomplete-green {
   display: inline;
   color: #2d882d;
