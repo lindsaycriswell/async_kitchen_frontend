@@ -4,6 +4,7 @@ import RecipeCard from "../Recipes/RecipeCard";
 import { connect } from "react-redux";
 import ShoppingListIngredientList from "./ShoppingListIngredientList";
 import * as emailjs from "emailjs-com";
+import bannerImage from "./../../photos/newbanner.jpg";
 
 class ShoppingListModalContainer extends React.Component {
   state = {
@@ -47,7 +48,8 @@ class ShoppingListModalContainer extends React.Component {
         "kitchensync_shopping_list",
         {
           email: this.state.email,
-          shoppingListIngredients: this.props.shoppingListIngredients
+          shoppingListIngredients: this.props.shoppingListIngredients,
+          image: bannerImage
         },
         "user_kN7rJ3E81xLlmJFFtafZ0"
       )
@@ -63,6 +65,10 @@ class ShoppingListModalContainer extends React.Component {
           console.log("FAILED. error=", err);
         }
       );
+
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    });
   };
 
   toggleModalOpen = () => {
@@ -129,11 +135,7 @@ class ShoppingListModalContainer extends React.Component {
                       placeholder="Email Address"
                       onChange={this.handleChange}
                     />
-                    <Button
-                      size="small"
-                      onClick={this.handleSubmit}
-                      onClick={this.toggleModalOpen}
-                    >
+                    <Button size="small" onClick={this.handleSubmit}>
                       Submit
                     </Button>
                   </div>
