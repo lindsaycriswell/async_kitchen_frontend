@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal } from "semantic-ui-react";
+import { Button, Modal, Input } from "semantic-ui-react";
 import RecipeCard from "../Recipes/RecipeCard";
 import { connect } from "react-redux";
 import ShoppingListIngredientList from "./ShoppingListIngredientList";
@@ -7,7 +7,8 @@ import * as emailjs from "emailjs-com";
 
 class ShoppingListModalContainer extends React.Component {
   state = {
-    email: ""
+    email: "",
+    modalOpen: false
   };
 
   handleChange = event => {
@@ -64,13 +65,21 @@ class ShoppingListModalContainer extends React.Component {
       );
   };
 
+  toggleModalOpen = () => {
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    });
+  };
+
   render() {
     return (
       <div>
         <Modal
           className="ui small scrolling modal transition visible active"
+          open={this.state.modalOpen}
           trigger={
             <Button
+              onClick={this.toggleModalOpen}
               size="medium"
               style={{
                 marginBottom: "40px"
@@ -112,13 +121,22 @@ class ShoppingListModalContainer extends React.Component {
                 <ShoppingListIngredientList
                   recipes={this.props.currentMeal.recipes}
                 />
-                <div className="sixteen wide column">
-                  <input
-                    type="text"
-                    placeholder="Email Address"
-                    onChange={this.handleChange}
-                  />
-                  <button onClick={this.handleSubmit}>Submit</button>
+                <div className="row">
+                  <div className="sixteen wide column">
+                    <Input
+                      style={{ margin: "20px" }}
+                      type="text"
+                      placeholder="Email Address"
+                      onChange={this.handleChange}
+                    />
+                    <Button
+                      size="small"
+                      onClick={this.handleSubmit}
+                      onClick={this.toggleModalOpen}
+                    >
+                      Submit
+                    </Button>
+                  </div>
                 </div>
               </div>
             </Modal.Content>
