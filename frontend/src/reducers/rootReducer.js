@@ -21,6 +21,7 @@ import {
 const defaultState = {
   // Toggles on homepage load
   activeMeal: false,
+  mealLoading: false,
 
   // Recipe fetches
   recipes: [],
@@ -43,11 +44,14 @@ const defaultState = {
 
 function rootReducer(state = defaultState, action) {
   switch (action.type) {
+    case CREATING_NEW_MEAL:
+      return { ...state, mealLoading: true };
     case CREATE_NEW_MEAL:
       return {
         ...state,
         currentMeal: action.payload,
-        activeMeal: !state.activeMeal
+        activeMeal: !state.activeMeal,
+        mealLoading: false
       };
     case FETCHING_RECIPES:
       return { ...state, recipesLoading: true };
@@ -57,8 +61,6 @@ function rootReducer(state = defaultState, action) {
       return state;
     case FETCHED_INGREDIENTS:
       return { ...state, ingredients: action.payload };
-    case CREATING_NEW_MEAL:
-      return state;
     case CREATING_NEW_RECIPE_MEAL:
       return state;
     case CREATE_NEW_RECIPE_MEAL:

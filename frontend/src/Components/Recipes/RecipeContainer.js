@@ -45,10 +45,9 @@ class RecipeContainer extends React.Component {
   };
 
   render() {
-    console.log(this.state.course);
     return (
       <div>
-        {!this.props.recipesLoading ? (
+        {!this.props.recipesLoading && !this.props.mealLoading ? (
           <div>
             {this.props.activeMeal ? (
               <div>
@@ -108,7 +107,8 @@ function mapStateToProps(state) {
     recipesLoading: state.recipesLoading,
     ingredients: state.ingredients,
     currentMeal: state.currentMeal,
-    activeMeal: state.activeMeal
+    activeMeal: state.activeMeal,
+    mealLoading: state.mealLoading
   };
 }
 
