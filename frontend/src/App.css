@@ -67,7 +67,7 @@
 .completed-grey {
   display: inline;
   text-decoration: line-through;
-  color: grey;
+  color: #d9d9d9;
   text-align: left;
 }
 
@@ -84,4 +84,10 @@
 
 .italic-text {
   font-style: italic;
+}
+
+.close {
+  text-align: center;
+  color: blue;
+  text-decoration: underline;
 }

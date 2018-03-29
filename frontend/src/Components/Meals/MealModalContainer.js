@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal } from "semantic-ui-react";
+import { Button, Modal, Card } from "semantic-ui-react";
 import RecipeCard from "../Recipes/RecipeCard";
 import MealRecipeDetail from "./MealRecipeDetail";
 import MealDirectionList from "./MealDirectionList";
@@ -70,9 +70,19 @@ class MealModalContainer extends React.Component {
                 className="ui grid centered"
                 style={{ marginTop: "10px" }}
               >
-                {this.props.recipes.map(recipe => (
-                  <RecipeCard recipe={recipe} key={recipe.id} />
-                ))}
+                <div className="row">
+                  <div className="sixteen wide column">
+                    <Card.Group
+                      itemsPerRow={5}
+                      centered
+                      style={{ margin: "10px" }}
+                    >
+                      {this.props.recipes.map(recipe => (
+                        <RecipeCard recipe={recipe} key={recipe.id} />
+                      ))}
+                    </Card.Group>
+                  </div>
+                </div>
                 {this.props.recipes.map(recipe => (
                   <MealRecipeDetail
                     recipe={recipe}

@@ -15,7 +15,6 @@ const MealDirectionList = props => {
     return 0;
   });
 
-  console.log(sortedDirections);
   return (
     <div className="ui grid">
       {sortedDirections.map(direction => (
