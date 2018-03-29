@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal, Input } from "semantic-ui-react";
+import { Button, Modal, Input, Card } from "semantic-ui-react";
 import RecipeCard from "../Recipes/RecipeCard";
 import { connect } from "react-redux";
 import ShoppingListIngredientList from "./ShoppingListIngredientList";
@@ -94,7 +94,6 @@ class ShoppingListModalContainer extends React.Component {
               Create a shopping list for this meal
             </Button>
           }
-          closeIcon
         >
           <Modal.Header
             style={{
@@ -109,9 +108,19 @@ class ShoppingListModalContainer extends React.Component {
               className="ui grid centered"
               style={{ marginTop: "10px" }}
             >
-              {this.props.currentMeal.recipes.map(recipe => (
-                <RecipeCard recipe={recipe} key={recipe.id} />
-              ))}
+              <div className="row">
+                <div className="sixteen wide column">
+                  <Card.Group
+                    itemsPerRow={3}
+                    centered
+                    style={{ margin: "10px" }}
+                  >
+                    {this.props.currentMeal.recipes.map(recipe => (
+                      <RecipeCard recipe={recipe} key={recipe.id} />
+                    ))}
+                  </Card.Group>
+                </div>
+              </div>
               <div className="row">
                 <div className="sixteen wide column">
                   <h1 className="modal-header">Ingredients</h1>
@@ -139,6 +148,13 @@ class ShoppingListModalContainer extends React.Component {
                       Submit
                     </Button>
                   </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="sixteen wide column">
+                  <p className="close" onClick={this.toggleModalOpen}>
+                    Close
+                  </p>
                 </div>
               </div>
             </Modal.Content>

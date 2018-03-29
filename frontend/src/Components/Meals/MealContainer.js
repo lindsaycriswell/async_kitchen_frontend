@@ -10,7 +10,7 @@ const MealContainer = props => {
         <div className="sixteen wide column">
           <div className="ui grid centered">
             <h1 className="main-page-header" style={{ marginTop: "4%" }}>
-              Get cooking!
+              Get Cooking!
             </h1>
             <MealModalContainer recipes={props.recipes} />
             <div className="sixteen wide column">
