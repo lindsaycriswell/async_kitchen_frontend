@@ -34,6 +34,11 @@ const Filters = props => {
 
   const allCourses = props.recipes.map(recipe => recipe.course);
   const uniqueCourses = dedupe(allCourses);
+  uniqueCourses.unshift({
+    key: "All",
+    value: "All",
+    text: "All"
+  });
 
   const allIngredients = props.ingredients.map(
     ingredient => ingredient.search_name
