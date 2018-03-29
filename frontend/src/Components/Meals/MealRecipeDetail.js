@@ -3,6 +3,7 @@ import TimeParser from "./../TimeParser";
 import AddTimesToMealDirections from "./AddTimesToMealDirections";
 
 const MealRecipeDetail = props => {
+  console.log(props);
   let startTime = new Date();
 
   startTime.setHours(props.mealTime.hour);

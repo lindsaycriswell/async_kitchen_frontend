@@ -9,7 +9,8 @@ import bannerImage from "./../../photos/newbanner.jpg";
 class ShoppingListModalContainer extends React.Component {
   state = {
     email: "",
-    modalOpen: false
+    modalOpen: false,
+    dimmerClick: true
   };
 
   handleChange = event => {
@@ -102,6 +103,9 @@ class ShoppingListModalContainer extends React.Component {
             className="modal-header"
           >
             Create a Shopping List
+            <span style={{ float: "right" }} onClick={this.toggleModalOpen}>
+              X
+            </span>
           </Modal.Header>
           <div>
             <Modal.Content
