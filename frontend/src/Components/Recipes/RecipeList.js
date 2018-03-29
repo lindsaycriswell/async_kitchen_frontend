@@ -3,6 +3,7 @@ import RecipeCard from "./RecipeCard";
 import { Card } from "semantic-ui-react";
 
 const RecipeList = props => {
+  // console.log(props.filters.course);
   // FILTERS FROM STATE
   let recFilteredByNameAndCourse = props.recipes.filter(
     recipe =>

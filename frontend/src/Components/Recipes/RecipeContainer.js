@@ -28,9 +28,15 @@ class RecipeContainer extends React.Component {
         search: e.target.value
       });
     } else if (data.name === "course") {
-      this.setState({
-        course: data.value
-      });
+      if (data.value === "All") {
+        this.setState({
+          course: ""
+        });
+      } else {
+        this.setState({
+          course: data.value
+        });
+      }
     } else if (data.name === "ingredients") {
       this.setState({
         ingredients: data.value
@@ -39,6 +45,7 @@ class RecipeContainer extends React.Component {
   };
 
   render() {
+    console.log(this.state.course);
     return (
       <div>
         {!this.props.recipesLoading ? (
