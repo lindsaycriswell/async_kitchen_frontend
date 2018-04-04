@@ -82,7 +82,7 @@ class ShoppingListModalContainer extends React.Component {
     return (
       <div>
         <Modal
-          className="ui small scrolling modal transition visible active"
+          className="ui medium scrolling modal transition visible active"
           open={this.state.modalOpen}
           trigger={
             <Button
@@ -103,7 +103,10 @@ class ShoppingListModalContainer extends React.Component {
             className="modal-header"
           >
             Create a Shopping List
-            <span style={{ float: "right" }} onClick={this.toggleModalOpen}>
+            <span
+              style={{ float: "right", color: "black" }}
+              onClick={this.toggleModalOpen}
+            >
               X
             </span>
           </Modal.Header>

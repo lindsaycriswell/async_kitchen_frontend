@@ -14,7 +14,7 @@ const MealContainer = props => {
             </h1>
             <MealModalContainer recipes={props.recipes} />
             <div className="sixteen wide column">
-              <Card.Group itemsPerRow={5} centered>
+              <Card.Group itemsPerRow={5} centered style={{ margin: "20px" }}>
                 <MealRecipeList recipes={props.recipes} />
               </Card.Group>
             </div>
