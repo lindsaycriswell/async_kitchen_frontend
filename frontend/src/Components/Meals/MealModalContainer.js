@@ -28,8 +28,6 @@ class MealModalContainer extends React.Component {
   render() {
     this.props.recipes.sort((a, b) => b.total_time - a.total_time);
 
-    // console.log(timeSortedRecipes);
-
     let endTime = new Date();
     endTime.setHours(this.state.mealTime.hour);
     endTime.setMinutes(this.state.mealTime.minute);
