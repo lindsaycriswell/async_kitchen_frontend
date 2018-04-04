@@ -6,7 +6,7 @@ A cooking time management app with timed recipe instructions to complete multipl
 
 ![Kitchen Sync Homepage](kitchen-sync-homepage.jpg)
 
-[Kitchen Sync Demo](https://www.youtube.com/edit?o=U&video_id=l_ZTE3p2yXQ)
+[Kitchen Sync Demo](https://youtu.be/l_ZTE3p2yXQ)
 
 ## How To Use
 * Browse available recipes and add them to your current meal.
