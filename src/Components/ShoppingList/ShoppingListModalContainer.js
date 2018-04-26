@@ -174,8 +174,8 @@ class ShoppingListModalContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    currentMeal: state.currentMeal,
-    shoppingListIngredients: state.shoppingListIngredients
+    currentMeal: state.root.currentMeal,
+    shoppingListIngredients: state.root.shoppingListIngredients
   };
 }
 

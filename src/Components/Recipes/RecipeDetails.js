@@ -58,7 +58,7 @@ class RecipeDetails extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    currentMeal: state.currentMeal
+    currentMeal: state.root.currentMeal
   };
 }
 
