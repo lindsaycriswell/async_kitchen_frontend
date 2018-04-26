@@ -26,7 +26,7 @@ const MealDirectionList = props => {
 
 function mapStateToProps(state) {
   return {
-    directionArray: state.directionArray
+    directionArray: state.root.directionArray
   };
 }
 

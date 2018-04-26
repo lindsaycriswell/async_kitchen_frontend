@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { fetchRecipes } from "../../actions/recipes";
 import { fetchIngredients } from "../../actions/ingredients";
 import { postMeal } from "../../actions/meals";
-import { Button, Dimmer, Loader, Segment, Image } from "semantic-ui-react";
+import { Dimmer, Loader, Segment, Image } from "semantic-ui-react";
 
 class RecipeContainer extends React.Component {
   state = {
@@ -45,6 +45,13 @@ class RecipeContainer extends React.Component {
   };
 
   render() {
+    console.log("activeMeal", this.props.activeMeal);
+    console.log("mealLoading", this.props.mealLoading);
+    console.log("recipes", this.props.recipes);
+    console.log("recipesLoading", this.props.recipesLoading);
+    console.log("ingredients", this.props.ingredients);
+    console.log("currentMeal", this.props.currentMeal);
+
     return (
       <div>
         {!this.props.recipesLoading && !this.props.mealLoading ? (
@@ -103,12 +110,12 @@ class RecipeContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    recipes: state.recipes,
-    recipesLoading: state.recipesLoading,
-    ingredients: state.ingredients,
-    currentMeal: state.currentMeal,
-    activeMeal: state.activeMeal,
-    mealLoading: state.mealLoading
+    recipes: state.root.recipes,
+    recipesLoading: state.root.recipesLoading,
+    ingredients: state.root.ingredients,
+    currentMeal: state.root.currentMeal,
+    activeMeal: state.root.activeMeal,
+    mealLoading: state.root.mealLoading
   };
 }
 
