@@ -24,6 +24,8 @@ class RecipeDetails extends React.Component {
         ) : (
           <Button
             onClick={() =>
+              // recipe is passed down from recipeCard
+              // postRecipeMeal and currentMeal are from reducer
               this.props.postRecipeMeal(
                 this.props.recipe,
                 this.props.currentMeal
