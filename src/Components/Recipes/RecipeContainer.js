@@ -47,13 +47,6 @@ class RecipeContainer extends React.Component {
   };
 
   render() {
-    console.log("activeMeal", this.props.activeMeal);
-    console.log("mealLoading", this.props.mealLoading);
-    console.log("recipes", this.props.recipes);
-    console.log("recipesLoading", this.props.recipesLoading);
-    console.log("ingredients", this.props.ingredients);
-    console.log("currentMeal", this.props.currentMeal);
-
     return (
       <div>
         {!this.props.recipesLoading && !this.props.mealLoading ? (
@@ -115,9 +108,9 @@ function mapStateToProps(state) {
     recipes: state.root.recipes,
     recipesLoading: state.root.recipesLoading,
     ingredients: state.root.ingredients,
-    currentMeal: state.root.currentMeal,
-    activeMeal: state.root.activeMeal,
-    mealLoading: state.root.mealLoading
+    currentMeal: state.meal.currentMeal,
+    activeMeal: state.meal.activeMeal,
+    mealLoading: state.meal.mealLoading
   };
 }
 

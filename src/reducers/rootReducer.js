@@ -3,7 +3,7 @@ import {
   FETCHED_INGREDIENTS,
   FETCHING_INGREDIENTS
 } from "../actions/ingredients";
-import { CREATE_NEW_MEAL, CREATING_NEW_MEAL } from "../actions/meals";
+
 import {
   CREATE_NEW_RECIPE_MEAL,
   CREATING_NEW_RECIPE_MEAL,
@@ -19,10 +19,6 @@ import {
 
 // SWITCH ACTIVEMEAL TO FALSE
 const defaultState = {
-  // Toggles on homepage load
-  activeMeal: false,
-  mealLoading: false,
-
   // Recipe fetches
   recipes: [],
   recipesLoading: false,
@@ -31,9 +27,10 @@ const defaultState = {
   ingredients: [],
 
   // RecipeMeals
-  currentMeal: {
-    recipes: []
-  },
+  // ***CREATE_NEW_MEAL, CREATING_NEW_MEAL, CREATE_NEW_RECIPE_MEAL, DESTROY_RECIPE_MEAL
+  // currentMeal: {
+  //   recipes: []
+  // },
 
   // Directions
   directionArray: [],
@@ -44,15 +41,6 @@ const defaultState = {
 
 function rootReducer(state = defaultState, action) {
   switch (action.type) {
-    case CREATING_NEW_MEAL:
-      return { ...state, mealLoading: true };
-    case CREATE_NEW_MEAL:
-      return {
-        ...state,
-        currentMeal: action.payload,
-        activeMeal: !state.activeMeal,
-        mealLoading: false
-      };
     case FETCHING_RECIPES:
       return { ...state, recipesLoading: true };
     case FETCHED_RECIPES:
