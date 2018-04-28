@@ -1,4 +1,3 @@
-import { FETCHED_RECIPES, FETCHING_RECIPES } from "../actions/recipes";
 import {
   FETCHED_INGREDIENTS,
   FETCHING_INGREDIENTS
@@ -17,10 +16,6 @@ import {
 
 // SWITCH ACTIVEMEAL TO FALSE
 const defaultState = {
-  // Recipe fetches
-  recipes: [],
-  recipesLoading: false,
-
   // Ingredient fetch
   ingredients: [],
 
@@ -33,10 +28,6 @@ const defaultState = {
 
 function rootReducer(state = defaultState, action) {
   switch (action.type) {
-    case FETCHING_RECIPES:
-      return { ...state, recipesLoading: true };
-    case FETCHED_RECIPES:
-      return { ...state, recipes: action.payload, recipesLoading: false };
     case FETCHING_INGREDIENTS:
       return state;
     case FETCHED_INGREDIENTS:

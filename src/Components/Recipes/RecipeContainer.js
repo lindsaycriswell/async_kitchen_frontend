@@ -113,8 +113,8 @@ class RecipeContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    recipes: state.root.recipes,
-    recipesLoading: state.root.recipesLoading,
+    recipes: state.recipe.recipes,
+    recipesLoading: state.recipe.recipesLoading,
     ingredients: state.root.ingredients,
     currentMeal: state.meal.currentMeal,
     activeMeal: state.meal.activeMeal,
