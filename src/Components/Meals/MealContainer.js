@@ -4,7 +4,6 @@ import MealModalContainer from "./MealModalContainer";
 import { Card } from "semantic-ui-react";
 
 const MealContainer = props => {
-  console.log(props.recipes.length);
   return (
     <div className="row">
       {props.recipes.length > 0 ? (
