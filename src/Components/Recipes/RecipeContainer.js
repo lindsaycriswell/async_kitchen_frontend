@@ -47,16 +47,14 @@ class RecipeContainer extends React.Component {
   };
 
   render() {
-    let thing = "thing";
+    let displayRecipes = [];
 
-    // create variables for current meal/other recipes to pass as props
-    console.log(thing);
-    console.log(this.props.recipes);
-    console.log(this.props.currentMeal.recipes);
+    for (var i = 0; i < this.props.recipes.length; i++) {
+      !this.props.currentMeal.recipes.includes(this.props.recipes[i])
+        ? displayRecipes.push(this.props.recipes[i])
+        : null;
+    }
 
-    // Filter all recipes to remove current meal recipes
-    // figure out why modal doesn't close when addedRecipe
-    // fix deleterecipemeal
     return (
       <div>
         {!this.props.recipesLoading && !this.props.mealLoading ? (
@@ -82,7 +80,7 @@ class RecipeContainer extends React.Component {
                     />
                   </div>
                   <RecipeList
-                    recipes={this.props.recipes}
+                    recipes={displayRecipes}
                     ingredients={this.props.ingredients}
                     filters={this.state}
                   />
