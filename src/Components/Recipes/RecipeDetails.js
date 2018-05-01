@@ -60,7 +60,8 @@ class RecipeDetails extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    currentMeal: state.meal.currentMeal
+    // changed from state.meal.currentMeal
+    currentMeal: []
   };
 }
 

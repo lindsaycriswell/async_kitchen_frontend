@@ -1,4 +1,4 @@
-class MealApi {
+class createMealApi {
   static postMeal() {
     return fetch("http://localhost:3000/meals", {
       method: "POST",
@@ -14,4 +14,4 @@ class MealApi {
   }
 }
 
-export default MealApi;
+export default createMealApi;

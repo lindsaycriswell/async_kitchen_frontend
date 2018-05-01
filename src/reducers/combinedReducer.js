@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import rootReducer from "./rootReducer";
 import recipeReducer from "./recipeReducer";
-import mealReducer from "./mealReducer";
+import createMealReducer from "./createMealReducer";
 
 export default combineReducers({
-  meal: mealReducer,
+  createMeal: createMealReducer,
   recipe: recipeReducer,
   root: rootReducer
 });
