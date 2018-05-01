@@ -8,9 +8,8 @@ import { connect } from "react-redux";
 import { fetchRecipes } from "../../actions/recipes";
 import { fetchIngredients } from "../../actions/ingredients";
 import { postMeal } from "../../actions/createMeal";
+import { fetchCurrentMeal } from "../../actions/currentMeal";
 import { Dimmer, Loader, Segment, Image } from "semantic-ui-react";
-
-// test
 
 class RecipeContainer extends React.Component {
   state = {
@@ -18,6 +17,8 @@ class RecipeContainer extends React.Component {
     course: "",
     ingredients: []
   };
+
+  // create new fetch to get current meal
 
   componentDidMount() {
     console.log("mounted");
@@ -48,7 +49,7 @@ class RecipeContainer extends React.Component {
   };
 
   render() {
-    console.log(this.props.currentMeal, "where");
+    console.log(this.props.currentMeal, "here!");
     let displayRecipes = [];
 
     if (this.props.currentMeal.recipes) {
@@ -96,6 +97,7 @@ class RecipeContainer extends React.Component {
                 </div>
               </div>
             ) : (
+              // Refactor banner image into its own component?
               <div>
                 <Image src={bannerImage} fluid onClick={this.props.postMeal} />
               </div>
