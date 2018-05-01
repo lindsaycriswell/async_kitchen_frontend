@@ -7,7 +7,7 @@ import MealContainer from "./../Meals/MealContainer";
 import { connect } from "react-redux";
 import { fetchRecipes } from "../../actions/recipes";
 import { fetchIngredients } from "../../actions/ingredients";
-import { postMeal } from "../../actions/meals";
+import { postMeal } from "../../actions/createMeal";
 import { Dimmer, Loader, Segment, Image } from "semantic-ui-react";
 
 // test
@@ -20,6 +20,7 @@ class RecipeContainer extends React.Component {
   };
 
   componentDidMount() {
+    console.log("mounted");
     this.props.fetchRecipes();
     this.props.fetchIngredients();
   }
@@ -47,12 +48,15 @@ class RecipeContainer extends React.Component {
   };
 
   render() {
+    console.log(this.props.currentMeal, "where");
     let displayRecipes = [];
 
-    for (var i = 0; i < this.props.recipes.length; i++) {
-      !this.props.currentMeal.recipes.includes(this.props.recipes[i])
-        ? displayRecipes.push(this.props.recipes[i])
-        : null;
+    if (this.props.currentMeal.recipes) {
+      for (var i = 0; i < this.props.recipes.length; i++) {
+        !this.props.currentMeal.recipes.includes(this.props.recipes[i])
+          ? displayRecipes.push(this.props.recipes[i])
+          : null;
+      }
     }
 
     return (
@@ -116,9 +120,10 @@ function mapStateToProps(state) {
     recipes: state.recipe.recipes,
     recipesLoading: state.recipe.recipesLoading,
     ingredients: state.root.ingredients,
-    currentMeal: state.meal.currentMeal,
-    activeMeal: state.meal.activeMeal,
-    mealLoading: state.meal.mealLoading
+    // changed from state.meal.currentMeal
+    currentMeal: [],
+    activeMeal: state.createMeal.activeMeal,
+    mealLoading: state.createMeal.mealLoading
   };
 }
 
