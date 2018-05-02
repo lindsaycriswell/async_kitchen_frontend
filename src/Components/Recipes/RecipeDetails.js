@@ -3,6 +3,7 @@ import IngredientContainer from "../Ingredients/IngredientContainer";
 import DirectionContainer from "../Directions/DirectionContainer";
 import { connect } from "react-redux";
 import { postRecipeMeal, destroyRecipeMeal } from "../../actions/recipemeals";
+
 import { Button } from "semantic-ui-react";
 
 class RecipeDetails extends React.Component {
@@ -22,19 +23,21 @@ class RecipeDetails extends React.Component {
             Remove from Meal
           </Button>
         ) : (
-          <Button
-            onClick={() =>
-              // recipe is passed down from recipeCard
-              // postRecipeMeal and currentMeal are from reducer
-              this.props.postRecipeMeal(
-                this.props.recipe,
-                this.props.currentMeal
-              )
-            }
-            style={{ marginBottom: "10px" }}
-          >
-            Add to Meal
-          </Button>
+          <a href="/current">
+            <Button
+              onClick={() =>
+                // recipe is passed down from recipeCard
+                // postRecipeMeal and currentMeal are from reducer
+                this.props.postRecipeMeal(
+                  this.props.recipe,
+                  this.props.currentMeal
+                )
+              }
+              style={{ marginBottom: "10px" }}
+            >
+              Add to Meal
+            </Button>
+          </a>
         )}
         <h4 className="recipe-card-info">{this.props.recipe.course}</h4>
         <h4 className="recipe-card-info">
@@ -60,11 +63,11 @@ class RecipeDetails extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    // changed from state.meal.currentMeal
-    currentMeal: []
+    currentMeal: state.currentMeal.currentMeal
   };
 }
 
-export default connect(mapStateToProps, { postRecipeMeal, destroyRecipeMeal })(
-  RecipeDetails
-);
+export default connect(mapStateToProps, {
+  postRecipeMeal,
+  destroyRecipeMeal
+})(RecipeDetails);

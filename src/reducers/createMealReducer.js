@@ -16,20 +16,8 @@ function createMealReducer(state = defaultState, action) {
       return { ...state, mealLoading: true };
     case CREATE_NEW_MEAL:
       return {
-        ...state,
         activeMeal: !state.activeMeal,
         mealLoading: false
-      };
-    // refactor!
-    case CREATING_NEW_RECIPE_MEAL:
-      return state;
-    case CREATE_NEW_RECIPE_MEAL:
-      return {
-        ...state,
-        currentMeal: {
-          ...state.currentMeal,
-          recipes: [...state.currentMeal.recipes, action.payload.addedRecipe]
-        }
       };
     default:
       return state;
