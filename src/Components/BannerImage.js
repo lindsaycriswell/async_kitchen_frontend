@@ -5,7 +5,11 @@ import { connect } from "react-redux";
 import { postMeal } from "../actions/createMeal";
 
 const BannerImage = props => {
-  return <Image src={bannerImage} fluid onClick={props.postMeal} />;
+  return (
+    <a href="/current">
+      <Image src={bannerImage} fluid onClick={props.postMeal} />
+    </a>
+  );
 };
 
 export default connect(null, { postMeal })(BannerImage);
