@@ -11,6 +11,3 @@ export function fetchCurrentMeal() {
     });
   };
 }
-
-// reducer
-// dispatch to props

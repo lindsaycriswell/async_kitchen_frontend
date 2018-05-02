@@ -22,6 +22,7 @@ class RecipeContainer extends React.Component {
 
   componentDidMount() {
     console.log("mounted");
+    this.props.fetchCurrentMeal();
     this.props.fetchRecipes();
     this.props.fetchIngredients();
   }
@@ -52,7 +53,7 @@ class RecipeContainer extends React.Component {
     console.log(this.props.currentMeal, "here!");
     let displayRecipes = [];
 
-    if (this.props.currentMeal.recipes) {
+    if (this.props.currentMeal) {
       for (var i = 0; i < this.props.recipes.length; i++) {
         !this.props.currentMeal.recipes.includes(this.props.recipes[i])
           ? displayRecipes.push(this.props.recipes[i])
@@ -62,13 +63,16 @@ class RecipeContainer extends React.Component {
 
     return (
       <div>
+        <h1>TEST</h1>
         {!this.props.recipesLoading && !this.props.mealLoading ? (
           <div>
             {this.props.activeMeal ? (
               <div>
                 <Image src={image} fluid />
                 <div className="ui grid centered">
-                  <MealContainer recipes={this.props.currentMeal.recipes} />
+                  {this.props.currentMeal ? (
+                    <MealContainer recipes={this.props.currentMeal.recipes} />
+                  ) : null}
                   <div className="row">
                     <h1
                       className="main-page-header"
@@ -122,8 +126,7 @@ function mapStateToProps(state) {
     recipes: state.recipe.recipes,
     recipesLoading: state.recipe.recipesLoading,
     ingredients: state.root.ingredients,
-    // changed from state.meal.currentMeal
-    currentMeal: [],
+    currentMeal: state.currentMeal.currentMeal,
     activeMeal: state.createMeal.activeMeal,
     mealLoading: state.createMeal.mealLoading
   };
@@ -132,5 +135,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   fetchRecipes,
   fetchIngredients,
-  postMeal
+  postMeal,
+  fetchCurrentMeal
 })(RecipeContainer);
