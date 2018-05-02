@@ -10,7 +10,7 @@ function recipeReducer(state = defaultState, action) {
     case FETCHING_RECIPES:
       return { ...state, recipesLoading: true };
     case FETCHED_RECIPES:
-      return { ...state, recipes: action.payload, recipesLoading: false };
+      return { recipes: action.payload, recipesLoading: false };
     default:
       return state;
   }

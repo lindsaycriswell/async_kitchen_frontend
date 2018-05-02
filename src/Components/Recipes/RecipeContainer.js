@@ -7,7 +7,6 @@ import MealContainer from "./../Meals/MealContainer";
 import { connect } from "react-redux";
 import { fetchRecipes } from "../../actions/recipes";
 import { fetchIngredients } from "../../actions/ingredients";
-import { postMeal } from "../../actions/createMeal";
 import { fetchCurrentMeal } from "../../actions/currentMeal";
 import { Dimmer, Loader, Segment, Image } from "semantic-ui-react";
 
@@ -18,14 +17,15 @@ class RecipeContainer extends React.Component {
     ingredients: []
   };
 
-  // create new fetch to get current meal
-
   componentDidMount() {
-    console.log("mounted");
     this.props.fetchCurrentMeal();
     this.props.fetchRecipes();
     this.props.fetchIngredients();
   }
+  //
+  // componentDidUpdate() {
+  //
+  // }
 
   handleChange = (e, data) => {
     if (e.target.name) {
@@ -50,62 +50,54 @@ class RecipeContainer extends React.Component {
   };
 
   render() {
-    console.log(this.props.currentMeal, "here!");
     let displayRecipes = [];
 
-    if (this.props.currentMeal) {
-      for (var i = 0; i < this.props.recipes.length; i++) {
-        !this.props.currentMeal.recipes.includes(this.props.recipes[i])
-          ? displayRecipes.push(this.props.recipes[i])
-          : null;
-      }
+    for (var i = 0; i < this.props.recipes.length; i++) {
+      !this.props.currentMeal.recipes.includes(this.props.recipes[i])
+        ? displayRecipes.push(this.props.recipes[i])
+        : null;
     }
 
+    console.log(this.props.currentMeal.recipes);
+    console.log(displayRecipes);
     return (
       <div>
-        <h1>TEST</h1>
         {!this.props.recipesLoading && !this.props.mealLoading ? (
           <div>
-            {this.props.activeMeal ? (
-              <div>
-                <Image src={image} fluid />
-                <div className="ui grid centered">
-                  {this.props.currentMeal ? (
-                    <MealContainer recipes={this.props.currentMeal.recipes} />
-                  ) : null}
-                  <div className="row">
-                    <h1
-                      className="main-page-header"
-                      style={{ marginTop: "30px" }}
-                    >
-                      Pick some recipes to add to your meal
-                    </h1>
-                  </div>
-                  <div className="row">
-                    <Filters
-                      recipes={this.props.recipes}
-                      ingredients={this.props.ingredients}
-                      handleChange={this.handleChange}
-                    />
-                  </div>
-                  <RecipeList
-                    recipes={displayRecipes}
+            <div>
+              <Image src={image} fluid />
+              <div className="ui grid centered">
+                {this.props.currentMeal.recipes ? (
+                  <MealContainer recipes={this.props.currentMeal.recipes} />
+                ) : null}
+                <div className="row">
+                  <h1
+                    className="main-page-header"
+                    style={{ marginTop: "30px" }}
+                  >
+                    Pick some recipes to add to your meal
+                  </h1>
+                </div>
+                <div className="row">
+                  <Filters
+                    recipes={this.props.recipes}
                     ingredients={this.props.ingredients}
-                    filters={this.state}
+                    handleChange={this.handleChange}
                   />
-                  <div className="row">
-                    <div className="sixteen wide column">
-                      <p id="footer">¡ LC ! Productions 2018</p>
-                    </div>
+                </div>
+                <RecipeList
+                  recipes={displayRecipes}
+                  ingredients={this.props.ingredients}
+                  filters={this.state}
+                />
+                <div className="row">
+                  <div className="sixteen wide column">
+                    <p id="footer">¡ LC ! Productions 2018</p>
                   </div>
                 </div>
               </div>
-            ) : (
-              // Refactor banner image into its own component?
-              <div>
-                <Image src={bannerImage} fluid onClick={this.props.postMeal} />
-              </div>
-            )}
+            </div>
+            )
           </div>
         ) : (
           <div>
@@ -128,13 +120,12 @@ function mapStateToProps(state) {
     ingredients: state.root.ingredients,
     currentMeal: state.currentMeal.currentMeal,
     activeMeal: state.createMeal.activeMeal,
-    mealLoading: state.createMeal.mealLoading
+    recipeMealLoading: state.createMeal.recipeMealLoading
   };
 }
 
 export default connect(mapStateToProps, {
   fetchRecipes,
   fetchIngredients,
-  postMeal,
   fetchCurrentMeal
 })(RecipeContainer);
