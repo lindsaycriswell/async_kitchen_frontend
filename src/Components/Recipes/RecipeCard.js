@@ -8,7 +8,6 @@ const RecipeCard = props => {
     .split(" ")
     .join("-")}.jpg`;
 
-  console.log(props.recipe);
   return (
     <Modal
       className="ui large scrolling modal transition visible active"

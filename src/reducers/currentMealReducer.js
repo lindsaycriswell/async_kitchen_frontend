@@ -13,8 +13,8 @@ function currentMealReducer(state = defaultState, action) {
     case FETCHING_CURRENT_MEAL:
       return { ...state, currentMealLoading: true };
     case FETCHED_CURRENT_MEAL:
+      console.log(action.payload);
       return {
-        ...state,
         currentMeal: action.payload,
         currentMealLoading: false
       };

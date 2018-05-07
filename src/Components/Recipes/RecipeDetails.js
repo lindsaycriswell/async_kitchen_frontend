@@ -7,6 +7,7 @@ import { Button } from "semantic-ui-react";
 
 class RecipeDetails extends React.Component {
   render() {
+    console.log(this.props.currentMealId);
     return (
       <div>
         {this.props.currentMealRecipes.includes(this.props.recipe) ? (
@@ -58,7 +59,8 @@ class RecipeDetails extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    currentMealRecipes: state.recipe.currentMealRecipes
+    currentMealRecipes: state.recipe.currentMealRecipes,
+    currentMealId: state.currentMeal
   };
 }
 

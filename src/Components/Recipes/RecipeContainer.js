@@ -6,6 +6,7 @@ import MealContainer from "./../Meals/MealContainer";
 import { connect } from "react-redux";
 import { fetchRecipes, fetchCurrentMealRecipes } from "../../actions/recipes";
 import { fetchIngredients } from "../../actions/ingredients";
+import { fetchCurrentMeal } from "../../actions/currentMeal";
 
 import { Dimmer, Loader, Segment, Image } from "semantic-ui-react";
 
@@ -20,6 +21,7 @@ class RecipeContainer extends React.Component {
     this.props.fetchCurrentMealRecipes();
     this.props.fetchRecipes();
     this.props.fetchIngredients();
+    this.props.fetchCurrentMeal();
   }
 
   handleChange = (e, data) => {
@@ -109,8 +111,10 @@ function mapStateToProps(state) {
   };
 }
 
+// figure out current meal fetch to send to rm actions
 export default connect(mapStateToProps, {
   fetchRecipes,
   fetchIngredients,
-  fetchCurrentMealRecipes
+  fetchCurrentMealRecipes,
+  fetchCurrentMeal
 })(RecipeContainer);
