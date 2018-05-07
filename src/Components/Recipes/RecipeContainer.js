@@ -9,7 +9,6 @@ import { fetchIngredients } from "../../actions/ingredients";
 
 import { Dimmer, Loader, Segment, Image } from "semantic-ui-react";
 
-
 class RecipeContainer extends React.Component {
   state = {
     search: "",
@@ -50,7 +49,6 @@ class RecipeContainer extends React.Component {
       <div>
         {!this.props.recipesLoading && !this.props.currentMealRecipesLoading ? (
           <div>
-
             <div>
               <Image src={image} fluid />
               <div className="ui grid centered">
@@ -69,7 +67,7 @@ class RecipeContainer extends React.Component {
                   <Filters
                     recipes={this.props.recipes}
                     ingredients={this.props.ingredients}
-                    filters={this.state}
+                    handleChange={this.handleChange}
                   />
                 </div>
                 <RecipeList
@@ -81,15 +79,11 @@ class RecipeContainer extends React.Component {
                 <div className="row">
                   <div className="sixteen wide column">
                     <p id="footer">¡ LC ! Productions 2018</p>
-
                   </div>
                 </div>
               </div>
-            ) : (
-              <div>
-                <Image src={bannerImage} fluid onClick={this.props.postMeal} />
-              </div>
-            )}
+            </div>
+            )
           </div>
         ) : (
           <div>
@@ -107,12 +101,11 @@ class RecipeContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    recipes: state.root.recipes,
-    recipesLoading: state.root.recipesLoading,
+    recipes: state.recipe.recipes,
+    recipesLoading: state.recipe.recipesLoading,
     ingredients: state.root.ingredients,
     currentMealRecipes: state.recipe.currentMealRecipes,
     currentMealRecipesLoading: state.recipe.currentMealRecipesLoading
-
   };
 }
 
@@ -120,5 +113,4 @@ export default connect(mapStateToProps, {
   fetchRecipes,
   fetchIngredients,
   fetchCurrentMealRecipes
-
 })(RecipeContainer);
