@@ -49,6 +49,8 @@ const ShoppingListIngredientList = props => {
     return 0;
   });
 
+  // console.log(ingArr);
+
   return (
     <div className="ui grid">
       {ingArr.map(ingredient => (
