@@ -15,6 +15,7 @@ const MealRecipeList = props => {
     return 0;
   });
 
+  console.log(props, "meal");
   return sortedRecipes.map(recipe => (
     <RecipeCard recipe={recipe} key={recipe.id} />
   ));

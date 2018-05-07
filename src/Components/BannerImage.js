@@ -13,7 +13,3 @@ const BannerImage = props => {
 };
 
 export default connect(null, { postMeal })(BannerImage);
-
-// move create meal actions -- keep their state in RecipeContainer
-
-//

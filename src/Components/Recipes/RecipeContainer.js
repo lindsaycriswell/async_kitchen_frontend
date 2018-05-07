@@ -2,12 +2,11 @@ import React from "react";
 import Filters from "../Filters";
 import RecipeList from "./RecipeList";
 import image from "./../../photos/recipe-page.jpg";
-import bannerImage from "./../../photos/newbanner.jpg";
 import MealContainer from "./../Meals/MealContainer";
 import { connect } from "react-redux";
-import { fetchRecipes } from "../../actions/recipes";
+import { fetchRecipes, fetchCurrentMealRecipes } from "../../actions/recipes";
 import { fetchIngredients } from "../../actions/ingredients";
-import { fetchCurrentMeal } from "../../actions/currentMeal";
+
 import { Dimmer, Loader, Segment, Image } from "semantic-ui-react";
 
 class RecipeContainer extends React.Component {
@@ -18,14 +17,10 @@ class RecipeContainer extends React.Component {
   };
 
   componentDidMount() {
-    this.props.fetchCurrentMeal();
+    this.props.fetchCurrentMealRecipes();
     this.props.fetchRecipes();
     this.props.fetchIngredients();
   }
-  //
-  // componentDidUpdate() {
-  //
-  // }
 
   handleChange = (e, data) => {
     if (e.target.name) {
@@ -50,25 +45,15 @@ class RecipeContainer extends React.Component {
   };
 
   render() {
-    let displayRecipes = [];
-
-    for (var i = 0; i < this.props.recipes.length; i++) {
-      !this.props.currentMeal.recipes.includes(this.props.recipes[i])
-        ? displayRecipes.push(this.props.recipes[i])
-        : null;
-    }
-
-    console.log(this.props.currentMeal.recipes);
-    console.log(displayRecipes);
     return (
       <div>
-        {!this.props.recipesLoading && !this.props.mealLoading ? (
+        {!this.props.recipesLoading && !this.props.currentMealRecipesLoading ? (
           <div>
             <div>
               <Image src={image} fluid />
               <div className="ui grid centered">
-                {this.props.currentMeal.recipes ? (
-                  <MealContainer recipes={this.props.currentMeal.recipes} />
+                {this.props.currentMealRecipes ? (
+                  <MealContainer recipes={this.props.currentMealRecipes} />
                 ) : null}
                 <div className="row">
                   <h1
@@ -86,7 +71,8 @@ class RecipeContainer extends React.Component {
                   />
                 </div>
                 <RecipeList
-                  recipes={displayRecipes}
+                  recipesLoading={this.props.recipesLoading}
+                  recipes={this.props.recipes}
                   ingredients={this.props.ingredients}
                   filters={this.state}
                 />
@@ -118,14 +104,13 @@ function mapStateToProps(state) {
     recipes: state.recipe.recipes,
     recipesLoading: state.recipe.recipesLoading,
     ingredients: state.root.ingredients,
-    currentMeal: state.currentMeal.currentMeal,
-    activeMeal: state.createMeal.activeMeal,
-    recipeMealLoading: state.createMeal.recipeMealLoading
+    currentMealRecipes: state.recipe.currentMealRecipes,
+    currentMealRecipesLoading: state.recipe.currentMealRecipesLoading
   };
 }
 
 export default connect(mapStateToProps, {
   fetchRecipes,
   fetchIngredients,
-  fetchCurrentMeal
+  fetchCurrentMealRecipes
 })(RecipeContainer);
