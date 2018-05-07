@@ -11,3 +11,15 @@ export function fetchRecipes() {
     });
   };
 }
+
+export const FETCHED_CURRENT_MEAL_RECIPES = "FETCHED_CURRENT_MEAL_RECIPES";
+export const FETCHING_CURRENT_MEAL_RECIPES = "FETCHING_CURRENT_MEAL_RECIPES";
+
+export function fetchCurrentMealRecipes() {
+  return function(dispatch) {
+    dispatch({ type: FETCHING_CURRENT_MEAL_RECIPES });
+    RecipeApi.fetchCurrentMealRecipes().then(recipes => {
+      dispatch({ type: FETCHED_CURRENT_MEAL_RECIPES, payload: recipes });
+    });
+  };
+}

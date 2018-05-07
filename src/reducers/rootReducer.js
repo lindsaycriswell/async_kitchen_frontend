@@ -15,7 +15,6 @@ import {
   ADD_SHOPPING_LIST_INGREDIENT
 } from "../actions/shoppinglists";
 
-// SWITCH ACTIVEMEAL TO FALSE
 const defaultState = {
   // Toggles on homepage load
   activeMeal: false,

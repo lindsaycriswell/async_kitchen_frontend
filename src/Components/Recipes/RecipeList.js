@@ -65,7 +65,7 @@ const RecipeList = props => {
 
   return (
     <div className="row">
-      {sortedRecipes.length === 0 ? (
+      {sortedRecipes.length === 0 && props.recipesLoading === false ? (
         <h2
           className="main-page-header"
           style={{ marginTop: "5%", marginBottom: "24%" }}
