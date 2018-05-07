@@ -9,7 +9,7 @@ class RecipeDetails extends React.Component {
   render() {
     return (
       <div>
-        {this.props.currentMeal.recipes.includes(this.props.recipe) ? (
+        {this.props.currentMealRecipes.includes(this.props.recipe) ? (
           <Button
             onClick={() =>
               this.props.destroyRecipeMeal(
@@ -58,7 +58,7 @@ class RecipeDetails extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    currentMeal: state.root.currentMeal
+    currentMealRecipes: state.recipe.currentMealRecipes
   };
 }
 
