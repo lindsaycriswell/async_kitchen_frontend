@@ -3,10 +3,8 @@ import {
   FETCHED_INGREDIENTS,
   FETCHING_INGREDIENTS
 } from "../actions/ingredients";
-import { CREATE_NEW_MEAL, CREATING_NEW_MEAL } from "../actions/meals";
+
 import {
-  CREATE_NEW_RECIPE_MEAL,
-  CREATING_NEW_RECIPE_MEAL,
   DESTROYING_RECIPE_MEAL,
   DESTROY_RECIPE_MEAL
 } from "../actions/recipemeals";
