@@ -1,9 +1,4 @@
 import {
-  FETCHED_INGREDIENTS,
-  FETCHING_INGREDIENTS
-} from "../actions/ingredients";
-
-import {
   DESTROYING_RECIPE_MEAL,
   DESTROY_RECIPE_MEAL
 } from "../actions/recipemeals";
@@ -15,9 +10,6 @@ import {
 } from "../actions/shoppinglists";
 
 const defaultState = {
-  // Ingredient fetch
-  ingredients: [],
-
   // Directions
   directionArray: [],
 
@@ -27,11 +19,6 @@ const defaultState = {
 
 function rootReducer(state = defaultState, action) {
   switch (action.type) {
-    case FETCHING_INGREDIENTS:
-      return state;
-    case FETCHED_INGREDIENTS:
-      return { ...state, ingredients: action.payload };
-
     case ADD_DIRECTION:
       return {
         ...state,

@@ -105,7 +105,7 @@ function mapStateToProps(state) {
   return {
     recipes: state.recipe.recipes,
     recipesLoading: state.recipe.recipesLoading,
-    ingredients: state.root.ingredients,
+    ingredients: state.ingredient.ingredients,
     currentMealRecipes: state.recipe.currentMealRecipes,
     currentMealRecipesLoading: state.recipe.currentMealRecipesLoading
   };
