@@ -1,37 +1,17 @@
 import {
-  DESTROYING_RECIPE_MEAL,
-  DESTROY_RECIPE_MEAL
-} from "../actions/recipemeals";
-import { ADD_DIRECTION } from "../actions/directions";
-import {
   SET_SHOPPING_LIST_INGREDIENTS,
   REMOVE_SHOPPING_LIST_INGREDIENT,
   ADD_SHOPPING_LIST_INGREDIENT
 } from "../actions/shoppinglists";
 
 const defaultState = {
-  // Directions
-  directionArray: [],
-
-  // Shopping List and recipe meals
   shoppingListIngredients: []
 };
 
-function rootReducer(state = defaultState, action) {
+function shoppingListReducer(state = defaultState, action) {
   switch (action.type) {
-    case ADD_DIRECTION:
-      return {
-        ...state,
-        directionArray: [
-          ...state.directionArray.filter(
-            direction => direction.description !== action.payload.description
-          ),
-          action.payload
-        ]
-      };
     case SET_SHOPPING_LIST_INGREDIENTS:
       return {
-        ...state,
         shoppingListIngredients: [
           ...state.shoppingListIngredients.filter(
             ingredient =>
@@ -43,7 +23,6 @@ function rootReducer(state = defaultState, action) {
       };
     case REMOVE_SHOPPING_LIST_INGREDIENT:
       return {
-        ...state,
         shoppingListIngredients: [
           ...state.shoppingListIngredients.filter(
             ingredient =>
@@ -54,7 +33,6 @@ function rootReducer(state = defaultState, action) {
       };
     case ADD_SHOPPING_LIST_INGREDIENT:
       return {
-        ...state,
         shoppingListIngredients: [
           ...state.shoppingListIngredients,
           action.payload
@@ -65,4 +43,4 @@ function rootReducer(state = defaultState, action) {
   }
 }
 
-export default rootReducer;
+export default shoppingListReducer;

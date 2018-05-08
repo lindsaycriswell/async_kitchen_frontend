@@ -24,6 +24,7 @@ class RecipeContainer extends React.Component {
     this.props.fetchCurrentMeal();
   }
 
+  // reconsider when refactoring filters
   handleChange = (e, data) => {
     if (e.target.name) {
       this.setState({
@@ -111,7 +112,6 @@ function mapStateToProps(state) {
   };
 }
 
-// figure out current meal fetch to send to rm actions
 export default connect(mapStateToProps, {
   fetchRecipes,
   fetchIngredients,

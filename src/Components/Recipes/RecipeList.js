@@ -39,9 +39,8 @@ const RecipeList = props => {
   let allRelevantRecipes = [];
   for (var l = 0; l < getRecIds.length; l++) {
     for (var m = 0; m < recFilteredByNameAndCourse.length; m++) {
-      recFilteredByNameAndCourse[m].id === parseInt(getRecIds[l])
-        ? allRelevantRecipes.push(recFilteredByNameAndCourse[m])
-        : null;
+      if (recFilteredByNameAndCourse[m].id === parseInt(getRecIds[l], 10)) {
+      }
     }
   }
 
