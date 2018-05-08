@@ -7,33 +7,38 @@ import { Button } from "semantic-ui-react";
 
 class RecipeDetails extends React.Component {
   render() {
-    console.log(this.props.currentMealId);
+    console.log(this.props.currentMeal);
     return (
       <div>
         {this.props.currentMealRecipes.includes(this.props.recipe) ? (
-          <Button
-            onClick={() =>
-              this.props.destroyRecipeMeal(
-                this.props.recipe,
-                this.props.currentMeal
-              )
-            }
-            style={{ marginBottom: "10px" }}
-          >
-            Remove from Meal
-          </Button>
+          <a href="/current">
+            <Button
+              onClick={() =>
+                this.props.destroyRecipeMeal(
+                  this.props.recipe,
+                  this.props.currentMeal
+                )
+              }
+              style={{ marginBottom: "10px" }}
+            >
+              Remove from Meal
+            </Button>
+          </a>
         ) : (
-          <Button
-            onClick={() =>
-              this.props.postRecipeMeal(
-                this.props.recipe,
-                this.props.currentMeal
-              )
-            }
-            style={{ marginBottom: "10px" }}
-          >
-            Add to Meal
-          </Button>
+          <a href="/current">
+            {" "}
+            <Button
+              onClick={() =>
+                this.props.postRecipeMeal(
+                  this.props.recipe,
+                  this.props.currentMeal
+                )
+              }
+              style={{ marginBottom: "10px" }}
+            >
+              Add to Meal
+            </Button>
+          </a>
         )}
         <h4 className="recipe-card-info">{this.props.recipe.course}</h4>
         <h4 className="recipe-card-info">
@@ -60,7 +65,7 @@ class RecipeDetails extends React.Component {
 function mapStateToProps(state) {
   return {
     currentMealRecipes: state.recipe.currentMealRecipes,
-    currentMealId: state.currentMeal
+    currentMeal: state.currentMeal.currentMeal
   };
 }
 

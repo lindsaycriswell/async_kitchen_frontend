@@ -122,9 +122,12 @@ class ShoppingListModalContainer extends React.Component {
                     centered
                     style={{ margin: "10px" }}
                   >
-                    {this.props.currentMeal.recipes.map(recipe => (
-                      <RecipeCard recipe={recipe} key={recipe.id} />
-                    ))}
+                    // added ternary to debug - remove later
+                    {this.props.currentMeal
+                      ? this.props.currentMeal.recipes.map(recipe => (
+                          <RecipeCard recipe={recipe} key={recipe.id} />
+                        ))
+                      : null}
                   </Card.Group>
                 </div>
               </div>
@@ -140,9 +143,11 @@ class ShoppingListModalContainer extends React.Component {
                 </div>
               </div>
               <div>
-                <ShoppingListIngredientList
-                  recipes={this.props.currentMeal.recipes}
-                />
+                {
+                  // <ShoppingListIngredientList
+                  //   recipes={this.props.currentMeal.recipes}
+                  // />
+                }
                 <div className="row">
                   <div className="sixteen wide column">
                     <Input
