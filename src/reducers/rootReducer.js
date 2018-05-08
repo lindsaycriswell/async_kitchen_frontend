@@ -31,41 +31,7 @@ function rootReducer(state = defaultState, action) {
       return state;
     case FETCHED_INGREDIENTS:
       return { ...state, ingredients: action.payload };
-    case DESTROYING_RECIPE_MEAL:
-      return state;
-    case DESTROY_RECIPE_MEAL:
-      let newShoppingList = [];
-      for (var i = 0; i < state.shoppingListIngredients.length; i++) {
-        for (
-          var j = 0;
-          j < state.shoppingListIngredients[i].details.length;
-          j++
-        ) {
-          let newDets = state.shoppingListIngredients[i].details.filter(
-            rec => rec.id !== action.payload.id
-          );
-          state.shoppingListIngredients[i].details = newDets;
-          state.shoppingListIngredients[i].details.length === 1
-            ? newShoppingList.push(state.shoppingListIngredients[i])
-            : null;
-        }
-      }
-      return {
-        ...state,
-        recipes: [...state.recipes, action.payload],
-        currentMeal: {
-          ...state.currentMeal,
-          recipes: state.currentMeal.recipes.filter(
-            recipe => recipe.id !== action.payload.id
-          )
-        },
-        directionArray: [
-          ...state.directionArray.filter(
-            direction => direction.recipe !== action.payload.name
-          )
-        ],
-        shoppingListIngredients: newShoppingList
-      };
+
     case ADD_DIRECTION:
       return {
         ...state,
