@@ -16,7 +16,7 @@ A cooking time management app with timed recipe instructions to complete multipl
 
 ## Prerequisites
 
-* Ruby v5.1.4
+* Rails v5.1.4
 * PostgreSQL 10
 * React/Redux
 
